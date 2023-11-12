@@ -26,27 +26,27 @@ export function NavbarHome(props: any) {
               Bosh Sahifa
             </NavLink>
            </Box>
-           <Box className="hover-line" onClick={props.setPath}>
+            <Box className="hover-line" onClick={props.setPath}>
             <NavLink to="/restaurant" activeClassName="underline">
               Oshhona
             </NavLink>
            </Box>
-           <Box className="hover-line" onClick={props.setPath}>
+            <Box className="hover-line" onClick={props.setPath}>
             <NavLink to="/orders" activeClassName="underline">
               Buyurtma
             </NavLink>
            </Box>
-           <Box className="hover-line" onClick={props.setPath}>
+            <Box className="hover-line" onClick={props.setPath}>
             <NavLink to="/community" activeClassName="underline">
               Jamiyat
             </NavLink>
            </Box>
-           <Box className="hover-line" onClick={props.setPath}>
+            <Box className="hover-line" onClick={props.setPath}>
             <NavLink to="/help" activeClassName="underline">
                 Yordam
             </NavLink>
            </Box>
-           <Box className="hover-line">
+            <Box className="hover-line">
              <IconButton
                atia-aria-label="cart"
                id="basic-button"
@@ -68,9 +68,6 @@ export function NavbarHome(props: any) {
                 KIRISH
             </Button>
            </Box>
-
-
-
           </Stack>
         </Stack>
         
@@ -78,7 +75,7 @@ export function NavbarHome(props: any) {
           <Stack 
              justifyContent={"column"} 
              style={{ marginTop: "86px", marginLeft: "24px" }}
-        >
+           >
             <Box>
              <img src="/icons/welcome.svg" /> 
             </Box>
@@ -88,8 +85,8 @@ export function NavbarHome(props: any) {
             <Box 
                className="timeline_service"
                justifyContent={"column"} 
-               style={{ marginTop: "180px", 
-               marginLeft: "10px" }}
+               style={{ marginTop: "200px", 
+               marginLeft: "5px" }}
             >
                 24 soat xizmatingizdamiz.
             </Box>
