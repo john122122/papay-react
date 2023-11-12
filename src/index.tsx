@@ -13,7 +13,7 @@ import theme from './app/MaterialTheme';
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
-root.render(
+root.render( 
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
