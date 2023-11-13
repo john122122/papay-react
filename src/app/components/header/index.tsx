@@ -5,8 +5,7 @@ import { NavLink } from "react-router-dom";
 export function NavbarHome(props: any) {
     return (
     <div className="format home_navbar">
-        <Container>
-
+       <Container>
           <Stack 
             flexDirection={"row"}
             className="navbar_config"
@@ -61,13 +60,13 @@ export function NavbarHome(props: any) {
              </IconButton>
            </Box>
            <Box>
-            <Button 
+             <Button 
                variant="contained"
                style={{ color: "#FFFFFF", background: "#1976d2" }}
             >
                 KIRISH
-            </Button>
-           </Box>
+             </Button>
+            </Box>
           </Stack>
         </Stack>
         
