@@ -12,7 +12,7 @@ export function BestRestaurants() {
           src={"icons/line_group.svg"} 
           style={{ position: "absolute", left: "6%", transform: "rotate(360deg)"}}
         />
-      <Container sx={{ mt: "135px" }}>
+      <Container sx={{ paddingTop: "135px" }}>
          <Stack flexDirection={"column"} alignItems={"center"}>
           <Box className="category_title">Zo'r Restarantlar</Box>
             <Stack sx={{ mt: "43px" }} flexDirection="row" >
