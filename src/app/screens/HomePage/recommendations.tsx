@@ -128,9 +128,11 @@ export function Recommendations () {
                 <Box className={"article_category"}>Mashhurlar</Box>
                 <Box className={"article_news"}>
                   <h1 style={{ color: "orange" }}> TViever</h1>
+                  <img src="/restaurant/dish.jpeg" alt="" />
                 </Box>
                 <Box className={"article_news"}>
                   <h1 style={{ color: "orange" }}> TViever</h1>
+                  <img src="/restaurant/dish.jpeg" alt="" />
                 </Box>
             </Stack>
           </Stack>

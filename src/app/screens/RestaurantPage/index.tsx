@@ -4,12 +4,13 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { AllRestaurants } from "./AllRestaurants";
 import { OneRestaurant } from "./oneRestaurant";
 import { ChosenDish } from "./chosenDish";
+import "../../../css/restaurant.css";
 
 export function RestaurantPage() {
     let restaurant = useRouteMatch();
     console.log(restaurant);
     return (
-        <div className="retaurant_page">
+        <div className="restaurant_page">
           <Switch>
             <Route path={`${restaurant.path}/dish/:dish_id`}>
               <ChosenDish />
