@@ -134,7 +134,7 @@ export function TopRestaurants() {
               >
             <CardCover>
                    <img
-                      src="/restaurant/restaurant02.jpeg"
+                      src="/restaurant/dish.jpeg"
                       loading="lazy"
                       alt=""
                     />
@@ -147,7 +147,7 @@ export function TopRestaurants() {
                 />
               <CardContent sx={{ justifyContent: 'flex-end' }}>
               <Typography level="title-lg" textColor="#fff">
-                    Korea. Shouth
+                    Yangi Yo'l. Toshkent viloyati
                </Typography>
                <Typography
                   startDecorator={<LocationOnRoundedIcon />}
