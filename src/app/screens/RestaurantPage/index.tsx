@@ -1,6 +1,9 @@
 import React from "react";
 import { Container } from "@mui/material";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { AllRestaurants } from "./AllRestaurants";
+import { OneRestaurant } from "./oneRestaurant";
+import { ChosenDish } from "./chosenDish";
 
 export function RestaurantPage() {
     let restaurant = useRouteMatch();
@@ -8,10 +11,16 @@ export function RestaurantPage() {
     return (
         <div className="retaurant_page">
           <Switch>
-            <Route path={`${restaurant.path}/dish/:dish_id`}>Chosen Dish</Route>
-            <Route path={`${restaurant.path}/:restaurant_id`}>Chosen Restaurant</Route>
-            <Route path={`${restaurant.path}`}>All Restaurants</Route>
+            <Route path={`${restaurant.path}/dish/:dish_id`}>
+              <ChosenDish />
+            </Route>
+            <Route path={`${restaurant.path}/:restaurant_id`}>
+              <OneRestaurant />
+            </Route>
+            <Route path={`${restaurant.path}`}>
+              <AllRestaurants />
+            </Route>
           </Switch>
         </div>
-    )
+    );
 }
