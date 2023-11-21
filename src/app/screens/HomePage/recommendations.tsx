@@ -1,150 +1,123 @@
+import { Avatar, Box, Container, Stack } from "@mui/material";
 import React from "react";
-import {Avatar, Box, Container, Stack} from "@mui/material";
-import { url } from "inspector";
-import { Directions } from "@mui/icons-material";
-
-
-
-export function Recommendations() {
-    return(
-        <div className="top_article_frame">
-            <Container
-                maxWidth="lg"
-                sx={{ mb: "50px", mt: "60px" }}
-                style={{ position: "relative" }}
-            >
-                <Stack
-                    flexDirection={"column"}
-                    alignItems={"center"}
-                    sx={{ mt: "45px"}}
-                >
-                    <Box className={"category_title"}>Tafsiya qilingan maqolalar</Box>
-                    <Stack className={"article_main"} flexDirection={"row"}>
-                        <Stack className={"article_container"}>
-                            <Box className={"article_category"}>Ko'p ko'rilgan</Box>
-
-
-                            <Stack className={"article_box"}>
-                                <Box
-                                    className={"article_img"}
-                                    sx={{
-                                        backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSMUdiDK_eNdvqKz7NhCKFdG2MeDQ4g6eHlA&usqp=CAU)`,
-                                    }}
-                                ></Box>
-                                <Box className={"article_info"}>
-                                    <Box className={"article_main_info"}>
-                                        <div className={"article_author"}>
-                                            <Avatar
-                                                alt=""
-                                                src={"/icons/qiz.svg"}
-                                                sx={{ width: "35px", height: "35px" }}
-                                            />
-                                            <span className={"author_username"}>R.Komilov</span>
-                                        </div>
-                                        <span className={"article_title"}>
-                                      Eng qiziqarli va shirin taomlar
-                                  </span>
-                                        <p className={"article_desc"}></p>
-                                    </Box>
-                                </Box>
-                            </Stack>
-
-
-                            <Stack className={"article_box"}>
-                                <Box
-                                    className={"article_img"}
-                                    sx={{
-                                        backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSMUdiDK_eNdvqKz7NhCKFdG2MeDQ4g6eHlA&usqp=CAU)`,
-                                    }}
-                                ></Box>
-                                <Box className={"article_info"}>
-                                    <Box className={"article_main_info"}>
-                                        <div className={"article_author"}>
-                                            <Avatar
-                                               alt=""
-                                               src={"/icons/qiz.svg"}
-                                                sx={{ width: "35px", height: "35px" }}
-                                            />
-                                            <span className={"author_username"}>Mitti_vine</span>
-                                        </div>
-                                        <span className={"article_title"}>
-                                      Eng qiziqarli va shirin taomlar
-                                  </span>
-                                        <p className={"article_desc"}></p>
-                                    </Box>
-                                </Box>
-                            </Stack>
-      <Box className={"article_category"} sx={{ marginTop: "10px" }}>
-                                Ko'p yoqtirilgan
-                            </Box>
-
-
-                            <Stack className={"article_box"}>
-                                <Box
-                                    className={"article_img"}
-                                    sx={{
-                                        backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSMUdiDK_eNdvqKz7NhCKFdG2MeDQ4g6eHlA&usqp=CAU)`,
-                                    }}
-                                ></Box>
-                                <Box className={"article_info"}>
-                                    <Box className={"article_main_info"}>
-                                        <div className={"article_author"}>
-                                            <Avatar
-                                                alt=""
-                                                src={"/icons/qiz.svg"}
-                                                sx={{ width: "35px", height: "35px" }}
-                                            />
-                                            <span className={"author_username"}>Dilnoza</span>
-                                        </div>
-                                        <span className={"article_title"}>
-                                      Surxondandiriga marhamamt
-                                  </span>
-                                        <p className={"article_desc"}></p>
-                                    </Box>
-                                </Box>
-                            </Stack>
-
-
-                            <Stack className={"article_box"}>
-                                <Box
-                                    className={"article_img"}
-                                    sx={{
-                                        backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSMUdiDK_eNdvqKz7NhCKFdG2MeDQ4g6eHlA&usqp=CAU`,
-                                    }}
-                                ></Box>
-                                <Box className={"article_info"}>
-                                    <Box className={"article_main_info"}>
-                                        <div className={"article_author"}>
-                                            <Avatar
-                                                alt=""
-                                                src={"/icons/qiz.svg"}
-                                                sx={{ width: "35px", height: "35px" }}
-                                            />
-                                            <span className={"author_username"}>ulug'bek_mitti</span>
-                                        </div>
-                                        <span className={"article_title"}>
-                                      Surxondandiriga marhamamt
-                                  </span>
-                                        <p className={"article_desc"}></p>
-                                    </Box>
-                                </Box>
-                            </Stack>
-                        </Stack>
-
-                        <Stack className={"article_container"}>
-                            <Box className={"article_category"}>Mashhurlar</Box>
-                            <Box className={"article_news"}>
-                                <h1 style={{ color: "orange"}}>Mashhurlar etirofi</h1>
-
-                            </Box>
-                            <Box className={"article_news"}>
-                                <h1 style={{ color: "orange"}}>Mashhurlar etirofi</h1>
-                            </Box>
-                        </Stack>
+export function Recomendations() {
+  return (
+    <div className="top_article_frame">
+      <Container
+        maxWidth="lg"
+        style={{
+          marginTop: "50px",
+          marginBottom: "60px",
+          position: "relative",
+        }}
+      >
+        <Stack flexDirection={"column"} alignItems={"center"}>
+          <Box className="category_title">Tafsiya qilingan maqolalar</Box>
+          <Stack flexDirection={"row"} className="article_main">
+            <Stack flexDirection={"column"}>
+              <Stack className="article_container">
+                <Box className="article_categorya_title">Ko’p ko’rilgan</Box>
+                <Stack flexDirection={"column"}>
+                  <Stack className="articel_box" flexDirection={"row"}>
+                    <Box className="article_img"></Box>
+                    <Stack className="article_info">
+                      <Box className="article_main_info">
+                        <div className="article_author">
+                          <Avatar
+                            alt="author photo"
+                            src="/ath/user.svg"
+                            sx={{ width: "35px", height: "35px" }}
+                          />
+                          <span className="auth_username">Anvarbek</span>
+                        </div>
+                        <Box className="article_title" sx={{ mt: "22px" }}>
+                          Eng mazali va Shirin <br /> taomlar
+                        </Box>
+                        <p className="article_desc"></p>
+                      </Box>
                     </Stack>
+                  </Stack>
                 </Stack>
-            </Container>
-       
-       </div>
-    ); 
+                <Stack flexDirection={"column"}>
+                  <Stack className="articel_box" flexDirection={"row"}>
+                    <Box className="article_img"></Box>
+                    <Stack className="article_info">
+                      <Box className="article_main_info">
+                        <div className="article_author">
+                          <Avatar
+                            alt="author photo"
+                            src="/ath/user.svg"
+                            sx={{ width: "35px", height: "35px" }}
+                          />
+                          <span className="auth_username">Anvarbek</span>
+                        </div>
+                        <Box className="article_title" sx={{ mt: "22px" }}>
+                          Eng mazali va Shirin <br /> taomlar
+                        </Box>
+                        <p className="article_desc"></p>
+                      </Box>
+                    </Stack>
+                  </Stack>
+                </Stack>
+              </Stack>
+              <Stack className="article_container">
+                <Box className="article_categorya_title">Ko’p Yoqtirilgan</Box>
+                <Stack flexDirection={"column"}>
+                  <Stack className="articel_box" flexDirection={"row"}>
+                    <Box className="article_img"></Box>
+                    <Stack className="article_info">
+                      <Box className="article_main_info">
+                        <div className="article_author">
+                          <Avatar
+                            alt="author photo"
+                            src="/ath/user.svg"
+                            sx={{ width: "35px", height: "35px" }}
+                          />
+                          <span className="auth_username">Anvarbek</span>
+                        </div>
+                        <Box className="article_title" sx={{ mt: "22px" }}>
+                          Eng mazali va Shirin <br /> taomlar
+                        </Box>
+                        <p className="article_desc"></p>
+                      </Box>
+                    </Stack>
+                  </Stack>
+                </Stack>
+                <Stack flexDirection={"column"}>
+                  <Stack className="articel_box" flexDirection={"row"}>
+                    <Box className="article_img"></Box>
+                      <Stack className="article_info">
+                      <Box className="article_main_info">
+                        <div className="article_author">
+                          <Avatar
+                            alt="author photo"
+                            src="/ath/user.svg"
+                            sx={{ width: "35px", height: "35px" }}
+                          />
+                          <span className="auth_username">Anvarbek</span>
+                        </div>
+                        <Box className="article_title" sx={{ mt: "22px" }}>
+                          Eng mazali va Shirin <br /> taomlar
+                        </Box>
+                        <p className="article_desc"></p>
+                      </Box>
+                    </Stack>
+                  </Stack>
+                </Stack>
+              </Stack>
+            </Stack>
+            <Stack className="article_container">
+              <Box className="article_categorya_title">Mashhurlar</Box>
+              <Box className="article_news">
+                <h1 style={{ color: "orange" }}>TViewer</h1>
+              </Box>
+              <Box className="article_news">
+                <h1 style={{ color: "orange" }}>TViewer</h1>
+              </Box>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Container>
+    </div>
+  );
 }

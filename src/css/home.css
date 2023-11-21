@@ -351,144 +351,136 @@
   border-radius: 50%;
 }
 
-.homepage .top_article_frame {
+/* RECCOMENDATIONS */
+.top_article_frame {
   width: 100%;
-  height: auto;
-  display: flex;
+  height: 100%;
+  background: #0b0e11;
+  border: 1px solid #0b0e11;
 }
 
-.homepage .article_main {
+.category_title {
+  width: 428.293px;
+  height: 33px;
+  flex-shrink: 0;
+  color: #e3c08d;
+
+  font-family: "Roboto";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.article_main {
   margin-top: 32px;
   width: 100%;
-  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.homepage .article_main .article_container {
+.article_container {
   width: 568px;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.homepage .article_main .article_category {
-  display: flex;
+.article_categorya_title {
+  flex-shrink: 0;
+  color: #fff;
   margin-top: 10px;
-  justify-content: center;
   font-family: "Poppins";
+  font-size: 29px;
   font-style: normal;
   font-weight: 600;
-  font-size: 29px;
-  line-height: 44px;
-
-  color: #ffffff;
+  line-height: normal;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.homepage .article_container .article_box {
+.articel_box {
   margin-top: 18px;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   border-radius: 20px;
-  flex-direction: row;
   background: #fff;
-  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 40px rgb(0, 0, 0, 0.25);
 }
 
-.homepage .article_container .article_news {
-  width: 100%;
-  border-radius: 20px;
-  height: 380px;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  justify-content: center;
-  /* box-shadow: 0px, 4px, 40px, rgba(0, 0, 0, 0.25) ; */
-  box-shadow: 0px, 4px, 40px, rgba(83, 0, 0, 0.25) ;
-}
-
-.homepage .article_box .article_img {
-  width: 150px;
-  height: 153px;
-  border-radius: 0px;
-  background-size: cover;
+.article_img {
+  width: 150.103px;
+  height: 150px;
   object-fit: contain;
   background-repeat: no-repeat;
+  background-image: url("/public/restaurant/rc_img.png");
 }
 
-.homepage .article_box .article_info {
+.article_info {
   padding: 10px 0px;
   width: 318px;
   height: auto;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
+  background: #fff;
 }
 
-.homepage .article_info .article_main_info {
-  width: 92px;
+.article_main_info {
+  width: 92%;
   height: 95%;
 }
 
-.homepage .article_main_info .article_author {
+.article_author {
   width: 100%;
-
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-
-.homepage .article_author .author_username {
+.auth_username {
   margin-left: 10px;
+  flex-shrink: 0;
+  color: #000;
+
   font-family: "Poppins";
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
   line-height: 26px;
-  color: #000000;
 }
 
-
-
-.homepage .article_main_info .article_title {
-  margin-top: 18px;
-  display: flex;
+.article_title {
+  width: 282.193px;
+  flex-shrink: 0;
+  color: #e3c08d;
+  margin-top: 22px;
   font-family: "Poppins";
+  font-size: 22px;
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
-  line-height: 33px;
-  color: #e3c08d;
+  line-height: normal;
 }
 
-.homepage .article_main_info .article_desc {
+.article_desc {
   margin-top: 10px;
+  color: #888888;
   font-family: "Poppins";
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
   line-height: 26px;
-  color: #808080;
 }
 
-.homepage .personal_img.right {
-  margin-top: -40px;
-  width: 216px;
-  height: 200px;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
-  background: url("/public/home/papays.png");
-  background-size: cover;
-}
-
-.homepage .personal_img.left {
-  margin-top: -40px;
-  width: 216px;
-  height: 200px;
-  transform: matrix(1, 0, 0, 1, 0, 0);
-  background: url("/public/home/papays.png");
-  background-size: cover;
+.article_news {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 20px;
+  height: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 0px 4px 40px rgb(83, 38, 208, 0.25);
 }
