@@ -18,7 +18,7 @@ import CallIcon from "@mui/icons-material/Call";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const order_list = Array.from(Array(8).keys());
+const order_list = Array.from(Array(9).keys());
 console.log(order_list);
 
 export function AllRestaurants() {
@@ -158,7 +158,7 @@ export function AllRestaurants() {
             </Stack>
             
             <Stack className={"bottom_box"}>
-              <img className={"line_img_two"} src={"/restaurant/line.svg"} />
+              <img className={"line_img_two"} src={"/icons/line.svg"} />
                 <Pagination
                   count={3}
                   page={1}
@@ -173,7 +173,7 @@ export function AllRestaurants() {
                     />   
                   )}
                 />  
-              <img className={"line_img"} src="/restaurant/line_svg" />
+              <img className={"line_img"} src="/icons/line.svg" />
             </Stack>
           </Stack>
         </Container>
