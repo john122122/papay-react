@@ -28,7 +28,7 @@ export function Recomendations() {
                             src="/ath/user.svg"
                             sx={{ width: "35px", height: "35px" }}
                           />
-                          <span className="auth_username">Anvarbek</span>
+                          <span className="auth_username">Ilhom</span>
                         </div>
                         <Box className="article_title" sx={{ mt: "22px" }}>
                           Eng mazali va Shirin <br /> taomlar
@@ -49,7 +49,7 @@ export function Recomendations() {
                             src="/ath/user.svg"
                             sx={{ width: "35px", height: "35px" }}
                           />
-                          <span className="auth_username">Anvarbek</span>
+                          <span className="auth_username">Jamil</span>
                         </div>
                         <Box className="article_title" sx={{ mt: "22px" }}>
                           Eng mazali va Shirin <br /> taomlar
@@ -73,7 +73,7 @@ export function Recomendations() {
                             src="/ath/user.svg"
                             sx={{ width: "35px", height: "35px" }}
                           />
-                          <span className="auth_username">Anvarbek</span>
+                          <span className="auth_username">Jamshid</span>
                         </div>
                         <Box className="article_title" sx={{ mt: "22px" }}>
                           Eng mazali va Shirin <br /> taomlar
@@ -94,7 +94,7 @@ export function Recomendations() {
                             src="/ath/user.svg"
                             sx={{ width: "35px", height: "35px" }}
                           />
-                          <span className="auth_username">Anvarbek</span>
+                          <span className="auth_username">Rustem</span>
                         </div>
                         <Box className="article_title" sx={{ mt: "22px" }}>
                           Eng mazali va Shirin <br /> taomlar
