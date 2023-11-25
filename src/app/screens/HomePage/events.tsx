@@ -10,7 +10,7 @@ export function Events() {
         {
             title: "Boyin foodga marhamat",
             desc: "yangicha uslubda yangicha tam va yangicha his",
-            author: "sunat_nur",
+            author: "Usman",
             date: "2023.11.16",
             location: "tashkent, nurafshon ko'cha",
             img:"/restaurant/yashil.jpg",
@@ -18,7 +18,7 @@ export function Events() {
         {
             title: "Boyin foodga marhamat",
             desc: "yangicha uslubda yangicha tam va yangicha his",
-            author: "sunat_nur",
+            author: "Usman",
             date: "2023.11.16",
             location: "tashkent, nurafshon ko'cha",
             img:"/restaurant/yashil.jpg",
@@ -26,7 +26,7 @@ export function Events() {
         {
             title: "Boyin foodga marhamat",
             desc: "yangicha uslubda yangicha tam va yangicha his",
-            author: "sunat_nur",
+            author: "Usman",
             date: "2023.11.16",
             location: "tashkent, nurafshon ko'cha",
             img:"/restaurant/yashil.jpg",
@@ -34,7 +34,7 @@ export function Events() {
         {
             title: "Boyin foodga marhamat",
             desc: "yangicha uslubda yangicha tam va yangicha his",
-            author: "sunat_nur",
+            author: "Usman",
             date: "2023.11.16",
             location: "tashkent, nurafshon ko'cha",
             img:"/restaurant/yashil.jpg",

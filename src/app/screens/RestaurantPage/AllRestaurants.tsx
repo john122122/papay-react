@@ -108,7 +108,7 @@ export function AllRestaurants() {
                         textColor="neutral.700"
                         startDecorator={<CallIcon />}
                       >
-                        +82-(1)04 042-5681
+                        +82-(10) 4042-5681
                       </Link>
                     </Typography>
                     <CardOverflow
