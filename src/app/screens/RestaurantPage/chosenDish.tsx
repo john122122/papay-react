@@ -87,9 +87,9 @@ export function ChosenDish() {
                      mazsali va sifatli taomlarni iste'mol qilishingiz mumkin. </p>
               <Marginer 
                //direction="horizantal"
-               height="1"
-               width="100%"
-               bg="#000000"
+                       height="1"
+                       width="100%"
+                       bg="#000000"
               />
               <div className={"dish_price_box"}>
                 <span>Narx</span>
