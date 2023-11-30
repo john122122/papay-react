@@ -12,6 +12,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { MemberPosts } from "./memberPosts";
 import { MemberFollowers } from "./memberFollowers";
 import { MemberFollowing } from "./memberFollowing";
+import { MySettings } from "./mySettings";
 
 export function VisitOtherPage(props: any) {
     /** INITIALIZATIONS **/
@@ -38,32 +39,20 @@ export function VisitOtherPage(props: any) {
                             <TabPanel value={"2"}>
                                 <Box className={"menu_name"}>Followers</Box>
                                 <Box className={"menu_content"}>
-                                    {/* //<MemberFollowers action_enabled={false} /> */}
+                                    //<MemberFollowers action_enabled={false} />
                                 </Box>
                             </TabPanel>
 
                             <TabPanel value={"3"}>
                                 <Box className={"menu_name"}>Following</Box>
                                 <Box className={"menu_content"}>
-                                    {/* <MemberFollowing action_enabled={false} /> */}
+                                    <MemberFollowing action_enabled={false} />
                                 </Box>
                             </TabPanel>
 
                             <TabPanel value={"4"}>
-                                <Box className={"menu_name"}>Maqola Yozish</Box>
-                                <Box className={"write_content"}></Box>
-                            </TabPanel>
-
-                            <TabPanel value={"5"}>
                                 <Box className={"menu_name"}>Tanlangan Maqola</Box>
                                 <Box className={"menu_content"}></Box>
-                            </TabPanel>
-
-                            <TabPanel value={"6"}>
-                                <Box className={"menu_name"}>Ma'lumotlarni o'zgartirish</Box>
-                                <Box className={"menu_content"}>
-                                    {/* <MySettings /> */}
-                                </Box>
                             </TabPanel>
                         </Box>
                     </Stack>
@@ -80,14 +69,14 @@ export function VisitOtherPage(props: any) {
                             >
                                 <div className={"order_user_img"}>
                                     <img
-                                       src={"/auth/default_user.svg"}
+                                       src={"/community/david.png"}
                                        className={"order_user_avatar"} 
                                     />
-                                    <div className={"order_user_icon_box"}>
-                                        <img src={"/icons/user_icon.svg"} />
+                                    <div className={"user_corner_icon"}>
+                                        <img src={"/icons/odamcha.svg"} />
                                     </div>
                                 </div>
-                                <span className={"order_user_name"}>Abbas Usman</span>
+                                <span className={"user_name"}>David Bakhem</span>
                                 <span className={"order_user_prof"}>USER</span>
                             </Box>
                             <Box className={"user_media_box"}>
@@ -96,9 +85,12 @@ export function VisitOtherPage(props: any) {
                                 <Telegram />
                                 <YouTube  />
                             </Box>
-                            <Box className={"user_media_box"}>
-                                <p className={"follows"}>Followers: 3</p>
-                                <p className={"follows"}>Followings: 2</p>
+                            <Box className={"user_media_box_follow"}
+                                     sx={{
+                                         flexDirection: "row",
+                                     }}
+                                >
+                                    <p className={"follows"}>Followers: 3 Following: 2</p>
                             </Box>
                             <p className={"user_desc"}>"qushimcha malumot kiritilmagan"</p>
                             <Box 
@@ -160,7 +152,7 @@ export function VisitOtherPage(props: any) {
                                 <Tab
                                    style={{ flexDirection: "column" }}
                                    value={"3"}
-                                   LinkComponent={() => (
+                                   component={() => (
                                     <div 
                                        className={`menu_box ${value} `}
                                        onClick={() => setValue("3")}
