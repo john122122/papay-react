@@ -20,28 +20,32 @@ export function ChosenDish() {
 
     return (
        <div className="chosen_dish_page">
-        <Container className="dish_container">
+        <Container className="dish_container"
+        sx={{display: "flex"}}
+        >
          <Stack className="chosen_dish_slider">
           <Swiper 
             className="dish_swiper"
             loop={true}
             spaceBetween={10}
             navigation={true} 
-            // thumbs={{ swiper: thumbsSwiper }}
             modules={[ FreeMode, Navigation, Thumbs ]}
           >
             {chosen_list.map((ele) => {
-              const image_path = `/others/steackk.png`;
+
               return (
                 <SwiperSlide>
                   <img 
                     style={{ width: "100%", height: "100%" }}
-                    src={image_path}  
+                    src="/others/steackk.png"
                 />
                 </SwiperSlide>
               );
             })}
           </Swiper>
+
+          
+          
            {/* 1.2 div: small pictures */}
            <div className={"one_dish_pics"}>
             <img className="one_dish_pic" src="/others/Rectangle_4301.png" />
@@ -73,7 +77,7 @@ export function ChosenDish() {
                       checked={true}
                     />
                      
-                   <span>15ta</span>
+                   <span>50ta</span>
                   </div>
                    <div style={{ display: "flex", alignItems: "center" }}>
                     <RemoveRedEyeIcon sx={{ mr: "10px" }} />

@@ -44,6 +44,22 @@ export function CommunityChats() {
             >
              <div className={"msg_right"}>Sizgaham.</div>
             </Box>
+            <Box
+              flexDirection={"row"}
+              style={{ display: "flex" }}
+              sx={{ m: "10px 0px" }}
+            >
+             <Avatar alt={"martin"} src={"/community/david.png"} />
+             <div className={"msg_left"}>Ta'omlariga qanaqa baho berasizlar?</div>
+            </Box>
+            <Box
+              flexDirection={"row"}
+              style={{ display: "flex" }}
+              sx={{ m: "10px 0px" }}
+            >
+             <Avatar alt={"martin"} src={"/community/usman.jpg"} />
+             <div className={"msg_left"}>Salom! Mijozlar juda yaxshi baxo berishib, maqtashyabti.</div>
+            </Box>
            </Stack>
           </Box>
           <Box className={"chat_bott"}>

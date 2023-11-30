@@ -7,21 +7,21 @@ import { ChosenDish } from "./chosenDish";
 import "../../../css/restaurant.css";
 
 export function RestaurantPage() {
-    let restaurant = useRouteMatch();
+  let restaurant = useRouteMatch();
     console.log(restaurant);
     return (
-        <div className="restaurant_page">
-          <Switch>
-            <Route path={`${restaurant.path}/dish/:dish_id`}>
-              <ChosenDish />
-            </Route>
-            <Route path={`${restaurant.path}/:restaurant_id`}>
-              <OneRestaurant />
-            </Route>
-            <Route path={`${restaurant.path}`}>
-              <AllRestaurants />
-            </Route>
-          </Switch>
-        </div>
+      <div className="restaurant_page">
+        <Switch>
+          <Route path={`${restaurant.path}/dish/:dish_id`}>
+            <ChosenDish />
+          </Route>
+        <Route path={`${restaurant.path}/:restaurant_id`}>
+            <OneRestaurant />
+          </Route>
+          <Route path={`${restaurant.path}`}>
+            <AllRestaurants />
+          </Route>
+        </Switch>
+      </div>
     );
 }
