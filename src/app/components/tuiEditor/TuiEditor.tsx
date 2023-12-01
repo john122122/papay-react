@@ -63,25 +63,28 @@ export const TuiEditor = (props: any) => {
             </Stack>
 
             {/*@ts-ignore*/}
-            <Editor 
-               ref={editorRef}
-               placeholder="Type here"
-               previewStyle="vertical"
-               height="640px"
-               initialEditType="WKSIWYG"
-               toolbarItems={[
-                  ["heading", "bold", "italic", "strike"],
-                  ["image", "table", "link"],
-                  ["ul", "ol", "task"],
-               ]}
-                hooks={{ 
-                    addImageBlobHook: async (image: any, callback: any) => {
-                        return false;
-                    },
-                }}
-                events={{
-                    load: function (parap: any) {},
-                }}
+            <Editor
+                initialValue="  "
+                placeholder="Type Here"
+                previewStyle="vertical"
+                height="640px"
+                initialEditType="wysiwyg"
+                useCommandShortcut={false}
+            // @ts-ignore
+                ref={editorRef}
+                toolbarItems={[
+                ["heading", "bold", "italic", "strike"],
+                ["image", "table", "link"],
+                ["ul", "ol", "task"],
+            ]}
+            hooks={{
+                addImageBlobHook: async (image: any, callback: any) => {
+                    return false;
+                },
+            }}
+            events={{
+                load: function (param:any) {},
+            }}
             />
             <Stack direction="row" justifyContent="center">
                 <Button 

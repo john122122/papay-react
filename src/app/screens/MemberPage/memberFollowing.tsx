@@ -6,7 +6,7 @@ import { Stack } from "@mui/system";
 
 const followings = [
     { mb_nick: "" },
-    { mb_nick: ""  },
+    { mb_nick: "" },
     { mb_nick: "" },
 ];
 

@@ -10,7 +10,6 @@ const followers = [
 
 export function MemberFollowers(props: any) {
     return (
-        <div className={"my_followers_page"}>
             <Stack>
                 {followers.map((follower) => {
                     const image_url = "/community/usman.jpg";
@@ -19,7 +18,7 @@ export function MemberFollowers(props: any) {
                             <Stack
                                 flexDirection="row"
                             >
-                                <Avatar alt={""} src={image_url} sx={{width: 89, height: 89,}}/>
+                               <Avatar alt={""} src={image_url} sx={{width: 89, height: 89,}}/>
                                 <div
                                     style={{
                                         width: "400px",
@@ -75,6 +74,5 @@ export function MemberFollowers(props: any) {
                     );
                 })}
             </Stack>
-        </div>
     );
 }

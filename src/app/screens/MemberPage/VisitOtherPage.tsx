@@ -13,6 +13,7 @@ import { MemberPosts } from "./memberPosts";
 import { MemberFollowers } from "./memberFollowers";
 import { MemberFollowing } from "./memberFollowing";
 import { MySettings } from "./mySettings";
+import TViewer from "../../components/tuiEditor/TViewer";
 
 export function VisitOtherPage(props: any) {
     /** INITIALIZATIONS **/
@@ -39,7 +40,7 @@ export function VisitOtherPage(props: any) {
                             <TabPanel value={"2"}>
                                 <Box className={"menu_name"}>Followers</Box>
                                 <Box className={"menu_content"}>
-                                    //<MemberFollowers action_enabled={false} />
+                                    <MemberFollowers action_enabled={false} />
                                 </Box>
                             </TabPanel>
 
@@ -52,7 +53,9 @@ export function VisitOtherPage(props: any) {
 
                             <TabPanel value={"4"}>
                                 <Box className={"menu_name"}>Tanlangan Maqola</Box>
-                                <Box className={"menu_content"}></Box>
+                                <Box className={"menu_content"}>
+                                <TViewer text={`<h3>Hello</h3>`}/>
+                                </Box>
                             </TabPanel>
                         </Box>
                     </Stack>
@@ -169,5 +172,5 @@ export function VisitOtherPage(props: any) {
             </Stack>
         </Container>
     </div>
-  )
+  );
 }

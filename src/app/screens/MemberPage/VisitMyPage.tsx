@@ -20,6 +20,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { TuiEditor } from "../../components/tuiEditor/TuiEditor";
+import TViewer from "../../components/tuiEditor/TViewer";
 
 export function VisitMyPage(props: any) {
     /** INITIALIZATIONS **/
@@ -89,7 +90,9 @@ export function VisitMyPage(props: any) {
 
                             <TabPanel value={"5"}>
                                 <Box className={"menu_name"}>Tanlangan Maqola</Box>
-                                <Box className={"menu_content"}></Box>
+                                <Box className={"menu_content"}>
+                                    <TViewer text={`<h3>Hello</h3>`}/>
+                                </Box>
                             </TabPanel>
 
                             <TabPanel value={"6"}>
