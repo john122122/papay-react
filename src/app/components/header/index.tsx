@@ -1,12 +1,17 @@
 import { Badge, Box, Button, Container, IconButton, Stack,} from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 export function NavbarHome(props: any) {
   /** INITIALIZATIONS */
   const [count, setCount] = useState(0);
+  const [value, setValue] = useState(true);
 
-  /** HANDLERS */
+  useEffect(() => {
+    setCount(count + 1);
+  }, [value]);
+
+ 
     return (
     <div className="format home_navbar">
        <Container>
