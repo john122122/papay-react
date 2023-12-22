@@ -9,11 +9,17 @@ import '../../../css/home.css';
 import { Recomendations } from "./recommendations";
 
 export function HomePage() {
+
+  // selector store => data
+
   useEffect(() => {
-    console.log("componentDidMount => Data fetch");
+    // backend data request => data
+
+    // slice: data => store
+    // console.log("componentDidMount => Data fetch");
 
     return () => {
-      console.log("componentWillUnmount process")
+      // console.log("componentWillUnmount process")
     }
 
   }, []);
