@@ -107,7 +107,7 @@ export function NavbarHome(props: any) {
                      background:"#1976d2",
                      color:"#FFFFFF", 
                    }}
-                   onClick={() => setCount(count + 1)}
+                   onClick={() => setValue(!value)}
                 >
                  RO’YHATDAN O’TISH
                 </Button>
