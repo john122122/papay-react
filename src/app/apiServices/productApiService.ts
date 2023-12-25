@@ -15,7 +15,7 @@ class ProductApiService {
     async getTargetProducts(data: ProductSearchObj) {
         try {
             const url = "/products",
-            result = await axios.post(this.path + url, data, {
+            result = await axios.post("http://localhost:3003" + url, data, {
                 withCredentials: true,
             });
             assert.ok(result, Definer.general_err1);

@@ -83,6 +83,4 @@ export function BestDishes() {
   );
 }
 
-function createSelectot(retrieveBestRestaurants: any, arg1: (bestRestaurants: any) => { bestRestaurants: any; }) {
-  throw new Error("Function not implemented.");
-}
+

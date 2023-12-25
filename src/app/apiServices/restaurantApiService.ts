@@ -14,10 +14,10 @@ class RestaurantApiService {
 
     async getTopRestaurants() {
         try {
-            const url = "/restaurants?order=top&page=1&limit=8",
-                result = await axios.get(this.path + url, { withCredentials: true });
+            const url = "/restaurants?order=top&page=1&limit=4",
+                result = await axios.get("http://localhost:3003" + url, { withCredentials: true }); 
             assert.ok(result, Definer.general_err1);
-
+           
             console.log("state:", result.data.state);
             const top_restaurants: Restaurant[] = result.data.data;
             return top_restaurants;
@@ -30,7 +30,7 @@ class RestaurantApiService {
     async getRestaurants(data: SearchObj) {
         try {
             const url = `/restaurants?order=${data.order}&page=${data.page}&limit=${data.limit}`,
-                result = await axios.get(this.path + url, { withCredentials: true });
+                result = await axios.get("http://localhost:3003" + url, { withCredentials: true });
             assert.ok(result, Definer.general_err1);
 
             console.log("state:", result.data.state);
