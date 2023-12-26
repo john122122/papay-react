@@ -53,23 +53,24 @@ export function NavbarOthers(props: any) {
             aria-haspopup="true"
             aria-expanded={undefined}
             // onClick={handleClick}
-        >
-         <Badge badgeContent={3} color="secondary">
-            <img src={"/icons/shopping_cart.svg"} />
-         </Badge>
-        </IconButton>
-         </Box>
-         <Box>
-           <Button 
-             variant="contained"
-             style={{ color: "#FFFFFF", background: "#1976d2" }}
-        >
-         KIRISH
-           </Button>
-         </Box>
-      </Stack>
-   </Stack>
-</Container>
-</div>
-  )
+                      >
+                         <Badge badgeContent={3} color="secondary">
+                            <img src={"/icons/shopping_cart.svg"} />
+                         </Badge>
+                      </IconButton>
+                   </Box>    
+                   <Box>
+                      <Button 
+                         variant="contained"
+                         style={{ color: "#FFFFFF", background: "#1976d2" }}
+                         onClick={props.handleLoginOpen}
+                      >
+                         KIRISH
+                      </Button>
+                   </Box>
+                </Stack>
+             </Stack>
+          </Container>
+       </div>
+   )
 };
