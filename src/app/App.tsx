@@ -150,7 +150,7 @@ function App() {
             handleLoginClose={handleLoginClose}
             signUpOpen={signUpOpen}
             handleSignUpOpen={handleSignUpOpen}
-            handleSignUpClose={handleLoginClose}
+            handleSignUpClose={handleSignUpClose}
             />
         </Router>
     );
