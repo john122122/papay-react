@@ -1,10 +1,10 @@
-import Cookie from "universal-cookie";
+import Cookies from "universal-cookie";
 
 
-const cookie = new Cookie();
+const cookies = new Cookies();
 let member_data: any = null;
-console.log(cookie.get("access_token"),"salom")
-if (cookie.get("access_token")) {
+console.log(cookies.get("access_token"),"salom")
+if (cookies.get("access_token")) {
     const memberDataJson: any = localStorage.getItem("member_data")
         ? localStorage.getItem("member_data")
         : null;
