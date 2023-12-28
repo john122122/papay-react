@@ -56,7 +56,7 @@ export function TopRestaurants() {
             group_type: "member",
          });
          assert.ok(like_result, Definer.general_err1);
-
+         
          if (like_result.like_status > 0) {
             e.target.style.fill = "red";
             refs.current[like_result.like_ref_id].innerHTML++;
