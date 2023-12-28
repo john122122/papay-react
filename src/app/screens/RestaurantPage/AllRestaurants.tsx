@@ -32,6 +32,7 @@ import assert from 'assert';
 import { Definer } from '../../../lib/Definer';
 import MemberApiService from '../../apiServices/memberApiService';
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from '../../../lib/sweetAlert';
+import { useHistory } from 'react-router-dom';
 
 /** REDUX SLICE */ 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -49,6 +50,7 @@ const targetRestaurantRetriever = createSelector (
 
 export function AllRestaurants() {
   /** Initialisation */
+  const history = useHistory();
   const { setTargetRestaurants } = actionDispatch(useDispatch());
   const { targetRestaurants } = useSelector(targetRestaurantRetriever);
   const [targetSearchObject, setTargetSearchObject] = useState<SearchObj>({
@@ -69,6 +71,9 @@ export function AllRestaurants() {
   // Qoida: [targetSearchObject]ti referensi uzgarganda > useEffect ishga tushadi 
 
   /** HANDLERS */
+  const chosenRestaurantHandler = (id: string) => {
+    history.push(`/restaurant/${id}`);
+  };
   const searchHandler = (category: string) => {
     targetSearchObject.page = 1;
     targetSearchObject.order = category;
@@ -142,14 +147,16 @@ export function AllRestaurants() {
                     const image_path = `${serverApi}/${ele.mb_image}`
                       return (
                         <Card
-                    variant="outlined"
-                    sx={{
-                      minHeight: 410,
-                      minWidth: 290,
-                      mx: "17px",
-                      my: "20px",
-                    }}
-                  >
+                          onClick={() => chosenRestaurantHandler(ele._id)}
+                          variant="outlined"
+                          sx={{
+                            minHeight: 410,
+                            minWidth: 290,
+                            mx: "17px",
+                            my: "20px",
+                            cursor: "pointer",  
+                           }}
+                        >
                     <CardOverflow>
                       <AspectRatio ratio="1">
                         <img src={image_path} alt="" />
