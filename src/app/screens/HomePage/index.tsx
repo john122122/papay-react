@@ -12,15 +12,17 @@ import '../../../css/home.css';
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setBestRestaurants, setTopRestaurants } from "../../screens/HomePage/slice";
+import {
+  setBestRestaurants,
+  setTopRestaurants,
+} from "../../screens/HomePage/slice";
 import { Restaurant } from "../../../types/user";
 import RestaurantApiService from "../../apiServices/restaurantApiService";
 
-/** Redux slice */ 
+/** REDUX SLICE */ 
 const actionDispatch = (dispatch: Dispatch) => ({
   setTopRestaurants: (data: Restaurant[]) => dispatch(setTopRestaurants(data)),
   setBestRestaurants: (data: Restaurant[]) => dispatch(setBestRestaurants(data)),
-
 });
 
 export function HomePage() {
