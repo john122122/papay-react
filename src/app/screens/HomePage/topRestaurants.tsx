@@ -56,8 +56,8 @@ export function TopRestaurants() {
             group_type: "member",
          });
          assert.ok(like_result, Definer.general_err1);
-         
-         if (like_result.like_status > 0) {
+
+         if (like_result.like_status >= 0) {
             e.target.style.fill = "red";
             refs.current[like_result.like_ref_id].innerHTML++;
          } else {
@@ -149,9 +149,9 @@ export function TopRestaurants() {
                               onClick={(e) => targetLikeTop(e, ele._id)}
                               style={{ 
                                  fill:
-                                    ele?.mb_liked && ele?.mb_liked[0]?.my_favorite 
+                                    ele?.me_liked && ele?.me_liked[0]?.my_favorite 
                                     ? "red"
-                                    : "wihte", 
+                                    : "white", 
                               }} 
                             />
                           </IconButton>

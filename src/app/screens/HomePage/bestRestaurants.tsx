@@ -121,7 +121,7 @@ export function BestRestaurants() {
                       onClick={(e) => targetLikeBest(e, ele._id)}  
                       style={{
                         fill: 
-                          ele?.mb_liked && ele?.mb_liked[0]?.my_favorite
+                          ele?.me_liked && ele?.me_liked[0]?.my_favorite
                             ? "red" 
                             : "white",
                          }}
