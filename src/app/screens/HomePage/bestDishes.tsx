@@ -10,6 +10,7 @@ import ProductApiService from "../../apiServices/productApiService";
 import { createSelector } from "reselect";
 import { retrieveTrendProducts } from "./selector";
 import { serverApi } from "../../../lib/config";
+import { useHistory } from "react-router-dom";
 
 /** Redux slice */ 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -25,16 +26,22 @@ const trendProductsRetriever = createSelector (
 );
 
 export function BestDishes() {
-   /** Initialisation */
-   const { setTrendProducts } = actionDispatch(useDispatch());
-   const { trendProducts } = useSelector(trendProductsRetriever);
-   useEffect(() => {
+  /** Initialisation */
+  const history = useHistory();
+  const { setTrendProducts } = actionDispatch(useDispatch());
+  const { trendProducts } = useSelector(trendProductsRetriever);
+  useEffect(() => {
     const productService = new ProductApiService();
     productService
       .getTargetProducts({ order: "product_likes", page: 1, limit: 4 })
       .then((data) => setTrendProducts(data))
       .catch((err) => console.log(err));
    }, []);
+  
+  /** HANDLERS */
+  const chosenDishHandler = (id: string) => {
+    history.push(`/restaurant/dish/${id}`);
+};
 
     return (
     <div className="best_dishes_frame">
@@ -57,7 +64,9 @@ export function BestDishes() {
                 >
                 <div className={"dish_sale"}>{size_volume}</div>
                 <div className={"view_btn"}>
-                  <div>Batafsil ko'rish</div>
+                  <div onClick={() => chosenDishHandler(product._id)}>
+                    Batafsil ko'rish
+                  </div>
                 <img 
                   src="/icons/arrow_right.svg"
                   style={{ marginLeft: "9px"}}
@@ -65,7 +74,9 @@ export function BestDishes() {
                 </div>
                 </Stack>
                 <Stack className={"dish_desc"}>
-                <span className={"dish_title_text"}>{product.product_name}</span>
+                    <span className={"dish_title_text"}>
+                      {product.product_name}
+                    </span>
                 <span className={"dish_desc_text"}>
                 <MonetizationOn />
                   {product.product_price}

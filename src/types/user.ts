@@ -42,7 +42,9 @@ export interface Member {
     me_followed: MeFollowed[];
 }
 
-
-
-
-
+// export interface AuthenticationModalProps {
+//     signUpOpen: boolean;
+//     loginOpen: boolean;
+//     handleLoginOpen: () => void;
+//     handleSingUpOpen: () => void;
+// }

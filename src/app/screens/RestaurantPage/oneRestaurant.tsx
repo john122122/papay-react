@@ -1,5 +1,5 @@
 import { Box ,Button, Container, Checkbox, Stack} from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -9,7 +9,16 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import StarIcon from "@mui/icons-material/Star";
-
+import { Product } from "../../../types/product";
+import { Restaurant } from '../../../types/user';
+import { Dispatch } from "@reduxjs/toolkit";
+import assert from "assert";
+import { Definer } from "../../../lib/Definer";
+import MemberApiService from "../../apiServices/memberApiService";
+import {
+    sweetErrorHandling,
+    sweetTopSmallSuccessAlert
+} from "../../../lib/sweetAlert";
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
 import {createSelector} from "reselect";
@@ -18,8 +27,6 @@ import {
     retrieveRandomRestaurants,
     retrieveTargetProducts,
 } from "../../screens/RestaurantPage/selector";
-import { Restaurant } from '../../../types/user';
-import { Dispatch } from "@reduxjs/toolkit";
 import {
     setChosenRestaurant,
     setRandomRestaurants,
@@ -30,17 +37,13 @@ import RestaurantApiService from '../../apiServices/restaurantApiService';
 import { serverApi } from '../../../lib/config';
 import { useHistory, useParams } from 'react-router-dom';
 import ProductApiService from "../../apiServices/productApiService";
-import { Product } from "../../../types/product";
-import assert from "assert";
-import { Definer } from "../../../lib/Definer";
-import MemberApiService from "../../apiServices/memberApiService";
-import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
+
 
 /** REDUX SLICE */ 
 const actionDispatch = (dispatch: Dispatch) => ({
     setRandomRestaurants: (data: Restaurant[]) =>
         dispatch(setRandomRestaurants(data)),
-    setChosenRestaurant: (data: Restaurant[]) =>
+    setChosenRestaurant: (data: Restaurant) =>
         dispatch(setChosenRestaurant(data)),
     setTargetProducts: (data: Product[]) =>
         dispatch(setTargetProducts(data)),
@@ -84,7 +87,7 @@ export function OneRestaurant() {
             restaurant_mb_id: restaurant_id,
             product_collection: "dish",
         });
-        const [productRebuild, setProductRebuild] = useState<Date>(new Date())
+    const [productRebuild, setProductRebuild] = useState<Date>(new Date());
 
     useEffect(() => {
         const restaurantService = new RestaurantApiService();
@@ -92,13 +95,19 @@ export function OneRestaurant() {
             .getRestaurants({ page: 1, limit: 10, order: "random" })
             .then((data) => setRandomRestaurants(data))
             .catch((err) => console.log(err));
+        
+        restaurantService
+            .getChosenRestaurant(chosenRestaurantId)
+            .then((data) => setChosenRestaurant(data))
+            .catch((err) => console.log(err));
+        
 
         const productService = new ProductApiService();
         productService
             .getTargetProducts(targetProductSearchObj)
             .then((data) => setTargetProducts(data))
             .catch((err) => console.log(err));
-    }, [targetProductSearchObj, productRebuild]);
+    }, [chosenRestaurantId, targetProductSearchObj, productRebuild]);
 
     /** HANDLERS */
     const chosenRestaurantHandler = (id: string) => {
@@ -107,17 +116,19 @@ export function OneRestaurant() {
         setTargetProductSearchObj({ ...targetProductSearchObj });
         history.push(`/restaurant/${id}`);
     };
-
     const searchCollectionHandler = (collection: string) => {
         targetProductSearchObj.page = 1;
         targetProductSearchObj.product_collection = collection;
         setTargetProductSearchObj({ ...targetProductSearchObj });
-    }
+    };
     const searchOrderHandler = (order: string) => {
         targetProductSearchObj.page = 1;
         targetProductSearchObj.order = order;
         setTargetProductSearchObj({ ...targetProductSearchObj });
-    }
+    };
+    const chosenDishHandler = (id: string) => {
+        history.push(`/restaurant/dish/${id}`);
+    };
 
      // likeni yuzaga keltiradigan kodlarimiz
    const targetLikeProduct = async (e: any) => {
@@ -420,20 +431,18 @@ export function OneRestaurant() {
                 <Box
                 className={"about_left"}
                 sx={{
-                    backgroundImage: `url('/restaurant/beshqozon.jpg')`
+                    backgroundImage: `url(${serverApi}/${chosenRestaurant?.mb_image})`,
                 }}
                 >
                     <div className={"about_left_desc"}>
-                        <span>Eng mazzali oshxona</span>
-                        <p>Biz sizlarga xizmat ko’rsatayotganimizdan bag’oyatda xursadmiz. 
-                            Bizning xaqimizda: O’z faoliyatimizni 1945 - yilda boshlaganmiz 
-                            vaxokazo vaxokazo vaxokazo...</p>
+                        <span>{chosenRestaurant?.mb_nick}</span>
+                            <p>{chosenRestaurant?.mb_description}</p>
                     </div>
                 </Box>
                 <Box className={"about_right"}>
                     {Array.from(Array(3).keys()).map((ele, index) => {
                        return (
-                  <Box display={'flex'} flexDirection={"row"} key={index}>
+                  <Box display={"flex"} flexDirection={"row"} key={index}>
                     <div className={"about_right_img"}></div>
                       <div className={"about_right_desc"}>
                         <span>Bizning mohir oshpazlarimiz</span>
