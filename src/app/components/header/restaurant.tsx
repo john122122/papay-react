@@ -40,12 +40,14 @@ export function NavbarRestaurant(props: any) {
          <NavLink to="/restaurant" activeClassName="underline">
               Oshhona
          </NavLink>
-            </Box>
+              </Box>
+            {props.verifiedMemberData ? ( // bu narsa login bulmagan userlar kura olmasligi uchun yordam beruvchi kod
             <Box className="hover-line" onClick={props.setPath}>
-         <NavLink to="/orders" activeClassName="underline">
+            <NavLink to="/orders" activeClassName="underline">
               Buyurtma
-         </NavLink>
-            </Box>
+            </NavLink>
+           </Box>
+            ) : null}
             <Box className="hover-line" onClick={props.setPath}>
          <NavLink to="/community" activeClassName="underline">
               Jamiyat

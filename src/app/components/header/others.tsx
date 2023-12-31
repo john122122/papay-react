@@ -41,11 +41,13 @@ export function NavbarOthers(props: any) {
               Oshhona
          </NavLink>
             </Box>
+            {props.verifiedMemberData ? (
             <Box className="hover-line" onClick={props.setPath}>
-         <NavLink to="/orders" activeClassName="underline">
+            <NavLink to="/orders" activeClassName="underline">
               Buyurtma
-         </NavLink>
-            </Box>
+            </NavLink>
+           </Box>
+            ) : null}
             <Box className="hover-line" onClick={props.setPath}>
          <NavLink to="/community" activeClassName="underline">
               Jamiyat
