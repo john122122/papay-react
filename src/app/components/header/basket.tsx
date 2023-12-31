@@ -123,7 +123,7 @@ export default function Basket(props: any) {
           </Box>
           {cartItems.length > 0 ? (
             <Box className={"to_order_box"}>
-              <span className={"price_text"}>Jami: ${totalPrice} = ({itemsPrice} + {shippingPrice})
+              <span className={"price_text"}>Jami: ${totalPrice}({itemsPrice} + {shippingPrice})
               </span>
               <Button
                 onClick={processOrderHandler}

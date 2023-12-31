@@ -69,8 +69,15 @@ export function NavbarHome(props: any) {
             <NavLink to="/help" activeClassName="underline">
                 Yordam
             </NavLink>
-           </Box>
-             <Basket/>
+              </Box>
+              
+              <Basket
+                cartItems={props.cartItems}
+                onAdd={props.onAdd}
+                onRemove={props.onRemove}
+                onDelete={props.onDelete}
+              />
+              
               {!props.verifiedMemberData ? (
                  <Box>
                   <Button 

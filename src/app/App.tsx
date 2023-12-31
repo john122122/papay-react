@@ -157,7 +157,11 @@ function App() {
                     handleLogOutClick={handleLogOutClick}                    
                     handleCloseLogOut={handleCloseLogOut}                   
                     handleLogOutRequest={handleLogOutRequest}                     
-                    verifiedMemberData={verifiedMemberData}                   
+                    verifiedMemberData={verifiedMemberData} 
+                    cartItems={cartItems} 
+                    onAdd={onAdd} 
+                    onRemove={onRemove}
+                    onDelete={onDelete}   
                 />
             ) : main_path.includes("/restaurant") ? (
                 <NavbarRestaurant 
@@ -185,7 +189,11 @@ function App() {
                     handleLogOutClick={handleLogOutClick}                            
                     handleCloseLogOut={handleCloseLogOut}                            
                     handleLogOutRequest={handleLogOutRequest}                            
-                    verifiedMemberData={verifiedMemberData}                           
+                    verifiedMemberData={verifiedMemberData} 
+                    cartItems={cartItems} 
+                    onAdd={onAdd} 
+                    onRemove={onRemove}
+                    onDelete={onDelete}           
                 />
             )}
 
