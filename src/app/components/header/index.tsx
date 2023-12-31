@@ -70,7 +70,6 @@ export function NavbarHome(props: any) {
                 Yordam
             </NavLink>
            </Box>
-            <Box className="hover-line">
              <Basket/>
               {!props.verifiedMemberData ? (
                  <Box>

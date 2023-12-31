@@ -68,7 +68,7 @@ const targetProductsRetriever = createSelector (
         targetProducts,
     })
 );  
-export function OneRestaurant() {
+export function OneRestaurant(props: any) {
     /** Initialisation */
     const history = useHistory();
     let { restaurant_id } = useParams<{ restaurant_id: string }>();
@@ -338,7 +338,12 @@ export function OneRestaurant() {
                                             />
                                        </Badge>
                                    </Button>
-                                   <Button className={"view_btn"}>
+                                        <Button className={"view_btn"}
+                                            onClick={(e) => {
+                                                props.onAdd(product);
+                                                e.stopPropagation();
+                                            }}
+                                        >
                                        <img 
                                        src={"/restaurant/shopping_cart.png"}
                                        style={{ display: "flex"}}
@@ -349,26 +354,26 @@ export function OneRestaurant() {
                                    style={{ right: "36px"}}
                                    >
                                        <Badge badgeContent={product.product_views} color="primary">
-                                           <Checkbox
+                                          <Checkbox
                                            icon={
                                                <RemoveRedEyeIcon style={{ color: "white" }} />
-                                           }
+                                            }
                                            />
-                                       </Badge>
-                                   </Button>
-                             </Box>  
-                             <Box className={"dish_desc"}>
-                                 <span className={"dish_title_text"}>Ajoyib shashlik</span>
-                                 <div className={"dish_desc_text"}>
-                                     <MonetizationOnIcon />8
-                                 </div>
+                                        </Badge>
+                                    </Button>
+                                    </Box>  
+                                    <Box className={"dish_desc"}>
+                                        <span className={"dish_title_text"}>Ajoyib shashlik</span>
+                                        <div className={"dish_desc_text"}>
+                                    <MonetizationOnIcon />8
+                                    </div>
                                  </Box>
                              </Box>
-                          );
+                           );
                         })}
                     </Stack>
                 </Stack>
-             </Stack>
+            </Stack>
         </Container>
 
         <div className={"review_for_restaurant"}>
