@@ -11,7 +11,7 @@ class OrderApiService {
         this.path = serverApi;
     }
 
-    async createOrder(data: CartItem[]) {
+    async createOrder(data: CartItem[]): Promise<CartItem> {
         try {
             const url = "/orders/create",
                 result = await axios.post(this.path + url, data, {
@@ -24,7 +24,7 @@ class OrderApiService {
 
             const order: any = result.data.data;
             console.log("order:", order);
-            return true;
+            return order;
             
         } catch (err: any) {
             console.log(`createOrder, ERROR: ${err.message}`);

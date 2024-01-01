@@ -104,8 +104,12 @@ export function OrdersPage(props: any) {
               <div className={"order_user_img"}>
                 <img src={"/icons/odamcha.svg"} />
               </div>
-              <span className={"order_user_name"}>Usman</span>
-              <span className={"order_user_prof"}>Foydalanuvchi</span>
+              <span className={"order_user_name"}>
+                {props.verifiedMemberData?.mb_nick}
+              </span>
+              <span className={"order_user_prof"}>
+              {props.verifiedMemberData?.mb_type ?? "User"}
+              </span>
             </Box>
             <Box className={"line"}></Box>
             <Box
