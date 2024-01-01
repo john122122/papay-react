@@ -3,6 +3,7 @@ import { serverApi } from "../../lib/config";
 import { CartItem } from "../../types/others";
 import assert from "assert";
 import { Definer } from "../../lib/Definer";
+import { Order } from "../../types/order";
 
 class OrderApiService {
     private readonly path: string;
@@ -11,7 +12,7 @@ class OrderApiService {
         this.path = serverApi;
     }
 
-    async createOrder(data: CartItem[]): Promise<CartItem> {
+    async createOrder(data: CartItem[]): Promise<Order> {
         try {
             const url = "/orders/create",
                 result = await axios.post(this.path + url, data, {
@@ -22,7 +23,7 @@ class OrderApiService {
             assert.ok( result?.data?.state != "fail", result?.data?.message );
             console.log("state:", result.data.state);
 
-            const order: any = result.data.data;
+            const order: Order = result.data.data;
             console.log("order:", order);
             return order;
             
@@ -32,7 +33,7 @@ class OrderApiService {
         }
     }
 
-    async getMyOrders(order_status: string) {
+    async getMyOrders(order_status: string): Promise<Order[]> {
         try {
             const url = `/orders?status=${order_status}`,
                 result = await axios.get(this.path + url, {
@@ -43,8 +44,7 @@ class OrderApiService {
             assert.ok(result?.data?.state != "fail", result?.data?.message);
             console.log("state:", result.data.state);
 
-            const orders: any = result.data.data;
-            console.log("orders:", orders);
+            const orders: Order[] = result.data.data;
             return orders;
         } catch (err: any) {
             console.log(`getMyOrders, ERROR: ${err.message}`);
@@ -52,7 +52,7 @@ class OrderApiService {
         }
     }
 
-    async updateOderStatus(data: any) {
+    async updateOderStatus(data: any): Promise<Order>{
         try {
             const url = "/orders/edit",
                 result = await axios.post(this.path + url, data, {
@@ -63,7 +63,7 @@ class OrderApiService {
             assert.ok(result?.data?.state != "fail", result?.data?.message);
             console.log("state:", result.data.state);
 
-            const order: any = result.data.data;
+            const order: Order = result.data.data;
             return order;
         } catch (err: any) {
             console.log(`updateOderStatus, ERROR: ${err.message}`);

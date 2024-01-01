@@ -13,16 +13,12 @@ import { Order } from "../../../types/order";
 import { useDispatch } from "react-redux"
 import { Dispatch } from "@reduxjs/toolkit";
 import {
-  retrieveChosenRestaurant,
-  retrieveRandomRestaurants,
-  retrieveTargetProducts,
-} from "../../screens/RestaurantPage/selector";
-import {
   setPausedOrders,
   setProcessOrders,
   setFinishedOrders
 } from "../../screens/OrdersPage/slice";
 import OrderApiService from "../../apiServices/orderApiService";
+import { Member } from "../../../types/user";
 
 
 /** REDUX SLICE */ 
@@ -37,6 +33,7 @@ export function OrdersPage(props: any) {
   const [value, setValue] = useState("1");
   const { setPausedOrders, setProcessOrders, setFinishedOrders } =
     actionDispatch(useDispatch());
+  const verifiedMemberData: Member | null = props.verifiedMemberData;
   
   useEffect(() => {
     const orderService = new OrderApiService();
@@ -102,13 +99,16 @@ export function OrdersPage(props: any) {
               alignItems={"center"}
             >
               <div className={"order_user_img"}>
-                <img src={"/icons/odamcha.svg"} />
+                <img
+                  //src={"/community/usman.jpg"}
+                  className={"order_user_avatar"}
+                />
               </div>
               <span className={"order_user_name"}>
-                {props.verifiedMemberData?.mb_nick}
+                {verifiedMemberData?.mb_nick}
               </span>
               <span className={"order_user_prof"}>
-              {props.verifiedMemberData?.mb_type ?? "User"}
+              {verifiedMemberData?.mb_type ?? "User"}
               </span>
             </Box>
             <Box className={"line"}></Box>
@@ -122,7 +122,9 @@ export function OrdersPage(props: any) {
               <div style={{ display: "flex" }}>
                 <LocationOnIcon />
               </div>
-              <div>Yunusabad 1-4, Tashkent</div>
+              <div>
+                {verifiedMemberData?.mb_address ?? 'manzil kiritilmagan'}
+              </div>
             </Box>
           </Box>
           <Box className={"payment_box"}>
