@@ -100,7 +100,7 @@ export function OrdersPage(props: any) {
             >
               <div className={"order_user_img"}>
                 <img
-                  //src={"/community/usman.jpg"}
+                  src={"/icons/odamcha.svg"}
                   className={"order_user_avatar"}
                 />
               </div>

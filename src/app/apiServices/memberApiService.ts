@@ -48,7 +48,7 @@ class MemberApiService {
         }
     }
 
-    public async logOutRequest() {
+    public async logOutRequest(): Promise<Boolean> {
         try {
             const result = await axios.get(this.path + "/logout",  {
                 withCredentials: true,
@@ -59,6 +59,7 @@ class MemberApiService {
             console.log("state:", result.data.state);
 
             const logout_result = result.data.state;
+            localStorage.removeItem("member_data");
             return logout_result == "success";
 
         }   catch (err: any) {
