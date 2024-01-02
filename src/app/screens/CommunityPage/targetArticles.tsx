@@ -4,12 +4,14 @@ import { RemoveRedEye } from "@mui/icons-material";
 import { FavoriteBorder } from "@mui/icons-material";
 import Favorite from "@mui/icons-material/Favorite";
 import moment from "moment";
+import { BoArticle } from "../../../types/boArticle";
+import { serverApi } from "../../../lib/config";
 
 export function TargetArticles(props: any) {
   return (
     <Stack>
-      {props.targetBoArticles?.map((articles: any, index: string) => {
-        const art_image_url = "/community/usman.jpg";
+      {props.targetBoArticles?.map((article: BoArticle) => {
+        const art_image_url = article?.art_image ? `${serverApi}/${article.art_image}` : "/community/usman.jpg";
         return (
           <Link
             className="all_article_box"
@@ -32,7 +34,7 @@ export function TargetArticles(props: any) {
                   className="all_article_author_user"
                   style={{ marginLeft: "10px" }}
                 >
-                  Usman
+                  {article?.member_data.mb_nick}
                 </span>
               </Box>
               <Box
@@ -40,9 +42,11 @@ export function TargetArticles(props: any) {
                 flexDirection={"column"}
                 sx={{ mt: "15px" }}
               >
-                <span className="all_article_title">evaluation</span>
+                <span className="all_article_title">
+                  {article?.bo_id}
+                </span>
                 <p className="all_article_desc">
-                  Texas De Brazil zo'r restarant
+                  {article?.art_subject}
                 </p>
               </Box>
               <Box>
@@ -55,16 +59,18 @@ export function TargetArticles(props: any) {
                     alignItems: "center",
                   }}
                 >
-                  <span>{moment().format("YY-MM-DD HH:mm")}</span>
-                    <Checkbox
-                      sx={{ ml: "40px" }}
-                      icon={<FavoriteBorder />}
-                      checkedIcon={<Favorite style={{ color: "red" }}/>}
-                      checked={false}
-                    />
-                      <span style={{ marginRight: "18px" }}>100</span>
+                <span>{moment().format("YY-MM-DD HH:mm")}</span>
+                  <Checkbox
+                    sx={{ ml: "40px" }}
+                    icon={<FavoriteBorder />}
+                    checkedIcon={<Favorite style={{ color: "red" }} />}
+                    id={article?._id}
+                    /*@ts-ignore*/
+                    checked={false}
+                  />
+                    <span style={{ marginRight: "18px" }}>{article?.art_likes}</span>
                    <RemoveRedEye />
-                 <span style={{ marginLeft: "18px" }}>1000</span>
+                 <span style={{ marginLeft: "18px" }}>{article?.art_views}</span>
                 </Box>
               </Box>
             </Box>

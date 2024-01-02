@@ -17,7 +17,6 @@ import assert from 'assert';
 import { Definer } from '../../../lib/Definer';
 import MemberApiService from '../../apiServices/memberApiService';
 import { useHistory } from 'react-router-dom';
-
 // REDUX
 import { useSelector} from "react-redux";
 import {createSelector} from "reselect";
