@@ -6,12 +6,38 @@ import Favorite from "@mui/icons-material/Favorite";
 import moment from "moment";
 import { BoArticle } from "../../../types/boArticle";
 import { serverApi } from "../../../lib/config";
+import assert from "assert";
+import { Definer } from "../../../lib/Definer";
+import MemberApiService from "../../apiServices/memberApiService";
+import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
 
 export function TargetArticles(props: any) {
+  const { setArticlesRebuild } = props;
+  /** HANDLERS */
+  const targetLikeHandler = async (e: any) => {
+    try {
+      assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+
+      const memberService = new MemberApiService();
+      const like_result = await memberService.memberLikeTarget({
+        like_ref_id: e.target._id,
+        group_type: "community",
+      });
+      assert.ok(like_result, Definer.general_err1);
+      await sweetTopSmallSuccessAlert('success', 700, false);
+      props.setArticlesRebuild(new Date());
+    } catch (err: any) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  };
+
   return (
     <Stack>
       {props.targetBoArticles?.map((article: BoArticle) => {
-        const art_image_url = article?.art_image ? `${serverApi}/${article.art_image}` : "/community/usman.jpg";
+        const art_image_url = article?.art_image
+          ? `${serverApi}/${article.art_image}`
+          : "/community/usman.jpg";
         return (
           <Link
             className="all_article_box"
@@ -64,9 +90,12 @@ export function TargetArticles(props: any) {
                     sx={{ ml: "40px" }}
                     icon={<FavoriteBorder />}
                     checkedIcon={<Favorite style={{ color: "red" }} />}
-                    id={article?._id}
-                    /*@ts-ignore*/
-                    checked={false}
+                    id={article?._id} 
+                    onClick={targetLikeHandler}
+                    checked={article?.me_liked && article.me_liked[0]?.my_favorite
+                      ? true
+                      : false
+                    }
                   />
                     <span style={{ marginRight: "18px" }}>{article?.art_likes}</span>
                    <RemoveRedEye />

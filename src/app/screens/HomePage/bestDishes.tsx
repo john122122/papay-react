@@ -50,7 +50,7 @@ export function BestDishes() {
          <Box className="category_title" marginTop={"255px"}>Trendagi Ovqatlar</Box>
           <Stack sx={{ mt: "43px" }} flexDirection={"row"}>
             {trendProducts.map((product: Product) => {
-              const image_path = `${serverApi}/${product.product_images[0]}`;
+              const image_path = `${serverApi}/${product?.product_images[0]}`;
               const size_volume = 
                 product.product_collection === "drink"
                 ? product.product_volume + "L"
@@ -64,7 +64,7 @@ export function BestDishes() {
                 >
                 <div className={"dish_sale"}>{size_volume}</div>
                 <div className={"view_btn"}>
-                  <div onClick={() => chosenDishHandler(product._id)}>
+                  <div onClick={() => chosenDishHandler(product?._id)}>
                     Batafsil ko'rish
                   </div>
                 <img 
@@ -75,11 +75,11 @@ export function BestDishes() {
                 </Stack>
                 <Stack className={"dish_desc"}>
                     <span className={"dish_title_text"}>
-                      {product.product_name}
+                      {product?.product_name}
                     </span>
                 <span className={"dish_desc_text"}>
                 <MonetizationOn />
-                  {product.product_price}
+                  {product?.product_price}
                 </span>
                 </Stack>
                 </Box>
