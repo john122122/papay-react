@@ -2,6 +2,28 @@ import {Button} from "@mui/material";
 import {Avatar, Box} from "@mui/material";
 import {Stack} from "@mui/system";
 
+// REDUX
+import { useDispatch, useSelector } from "react-redux";
+import {createSelector} from "reselect";
+import { setMemberFollowers } from "./slice";
+import { retrieveMemberFollowers } from "./selector";
+import { Dispatch } from "@reduxjs/toolkit";
+import { Follower } from "../../../types/follow";
+
+/** REDUX SLICE */ 
+const actionDispatch = (dispatch: Dispatch) => ({
+    setMemberFollowers: (data: Follower[]) =>
+        dispatch(setMemberFollowers(data)),
+});
+
+/** REDUX SELECTOR */
+const memberFollowersRetriever = createSelector (
+    retrieveMemberFollowers,
+    (memberFollowers) =>({
+        memberFollowers,
+    })
+);
+
 const followers = [
     {mb_nick: "usman", following: true},
     {mb_nick: "alen", following: false},
@@ -9,6 +31,10 @@ const followers = [
 ];
 
 export function MemberFollowers(props: any) {
+    /** INITIALIZATIONS **/
+  const { setMemberFollowers } = actionDispatch(useDispatch());
+  const { memberFollowers } = useSelector(memberFollowersRetriever);
+
     return (
             <Stack>
                 {followers.map((follower) => {
