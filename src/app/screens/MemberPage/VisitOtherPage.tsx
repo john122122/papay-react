@@ -88,7 +88,7 @@ export function VisitOtherPage(props: any) {
                             <TabPanel value={"1"}>
                                 <Box className={"menu_name"}>Maqolalar</Box>
                                 <Box className={"menu_content"}>
-                                    <MemberPosts/>
+                                    <MemberPosts chosenMemberBoArticles={chosenMemberBoArticles}/>
                                 </Box>
                             </TabPanel>
                             <TabPanel value={"2"}>
