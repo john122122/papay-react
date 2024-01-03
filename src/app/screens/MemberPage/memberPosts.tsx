@@ -28,13 +28,13 @@ export function MemberPosts(props: any) {
             const memberService = new MemberApiService();            
             const like_result = await memberService.memberLikeTarget({            
                 like_ref_id: e.target._id,               
-                group_type: "community",           
+                group_type: "member",           
           });
             assert.ok(like_result, Definer.general_err1);
             
             await sweetTopSmallSuccessAlert('success', 700, false);
             
-            props.setArticlesRebuild(new Date());           
+            setArticlesRebuild(new Date());           
         } catch (err: any) {
             console.log(err);            
             sweetErrorHandling(err).then();           
@@ -48,7 +48,11 @@ export function MemberPosts(props: any) {
                     ? `${serverApi}/${article.art_image}`
                     : "/community/default_article.svg";
                 return (
-                    <Stack className={"all_article_box"} sx={{ cursor: "pointer" }}>
+                    <Stack
+                        className={"all_article_box"}
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => renderChosenArticleHandler(article?._id)}
+                    >
                         <Box
                             className={"all_article_img"}
                             sx={{
