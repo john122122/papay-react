@@ -24,12 +24,12 @@ export function MemberPosts(props: any) {
         try {
             e.stopPropagation();           
             assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
-               
+            
             const memberService = new MemberApiService();            
             const like_result = await memberService.memberLikeTarget({            
                 like_ref_id: e.target._id,               
                 group_type: "member",           
-          });
+        });
             assert.ok(like_result, Definer.general_err1);
             
             await sweetTopSmallSuccessAlert('success', 700, false);
@@ -39,7 +39,7 @@ export function MemberPosts(props: any) {
             console.log(err);            
             sweetErrorHandling(err).then();           
         }
-      };
+    };
 
     return (
         <Box className={"post_content"}>
@@ -111,7 +111,7 @@ export function MemberPosts(props: any) {
                                             id={article?._id}
                                             checkedIcon={<Favorite style={{ color: "red" }} />}
                                             checked=
-                                              {article?.me_liked && article.me_liked[0]?.my_favorite
+                                            {article?.me_liked && article.me_liked[0]?.my_favorite
                                                 ? true
                                                 : false
                                             }
