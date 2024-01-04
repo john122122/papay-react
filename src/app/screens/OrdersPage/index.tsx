@@ -99,7 +99,11 @@ export function OrdersPage(props: any) {
               flexDirection={"column"}
               alignItems={"center"}
             >
-              <div className={"order_user_img"}>
+              <div
+                className={"order_user_img"}>
+                <img
+                  src={verifiedMemberData?.mb_image}
+                />
                 <img
                   src={"/icons/odamcha.svg"}
                   className={"order_user_avatar"}
