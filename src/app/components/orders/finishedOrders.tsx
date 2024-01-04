@@ -37,23 +37,23 @@ export default function FinishedOrders(props: any) {
                   return (
                     <Box className={"ordersName_price"}>
                       <img src={image_path} className={"orderDishImg"} />
-                      <p className={"titleDish"}>
+                      <span className={"titleDish"}>
                         {product?.product_name}
-                      </p>
+                      </span>
                       <Box className={"priceBox"}>
-                        <p>${item.item_price}</p>
+                        <span>${item.item_price}</span>
                         <img
                           style={{ margin: "0 10px" }}
                           src={"/icons/close.svg"}
                         />
-                        <p>{item.item_quantity}</p>
+                        <span>{item.item_quantity}</span>
                         <img
                           style={{ margin: "0 10px" }}
                           src={"/icons/pause.svg"}
                         />
-                        <p style={{ marginLeft: "15px" }}>
+                        <span style={{ marginLeft: "15px" }}>
                         ${item.item_price * item.item_quantity}
-                        </p>
+                        </span>
                       </Box>
                     </Box>
                   );
@@ -62,14 +62,30 @@ export default function FinishedOrders(props: any) {
 
               <Box className={"total_price_box finished"}>
               <Box className={"boxTotal"}>
-                  <p>Maxsulot narxi</p>
-                  <p>${order.order_total_amount - order.order_delivery_cost}</p>
-                  <img style={{ marginLeft: "20px" }} src={"/icons/plus.svg"}/>                             
-                  <p>Yetkazish xizmati</p>
-                  <p>${order.order_delivery_cost}</p>
-                  <img src={"/icons/pause.svg"} style={{ marginLeft: "20px" }} />
-                  <span>Jami narx</span>
-                  <span>${order.order_total_amount}</span>
+                  <span>
+                    Maxsulot narxi
+                  </span>
+                  <span>
+                    ${order.order_total_amount - order.order_delivery_cost}
+                  </span>
+                  <img
+                    style={{ marginLeft: "20px" }} src={"/icons/plus.svg"}
+                  />                             
+                  <span>
+                    Yetkazish xizmati
+                  </span>
+                  <span>
+                    ${order.order_delivery_cost}
+                  </span>
+                  <img
+                    src={"/icons/pause.svg"} style={{ marginLeft: "20px" }}
+                  />
+                  <span>
+                    Jami narx
+                  </span>
+                  <span>
+                    ${order.order_total_amount}
+                  </span>
                 </Box>
               </Box>
             </Box>
