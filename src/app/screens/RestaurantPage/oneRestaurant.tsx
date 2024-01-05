@@ -316,7 +316,8 @@ export function OneRestaurant(props: any) {
                                   sx={{
                                    backgroundImage: `url(${image_path})`,
                                   }}
-                                > 
+                                        onClick={() => chosenDishHandler(product._id)}
+                                    >   
                                    <div className={"dish_sale"}>{size_volume}</div>
                                     <Button
                                         className={"like_view_btn"}
@@ -363,9 +364,10 @@ export function OneRestaurant(props: any) {
                                     </Button>
                                     </Box>  
                                     <Box className={"dish_desc"}>
-                                        <span className={"dish_title_text"}>Ajoyib shashlik</span>
+                                        <span className={"dish_title_text"}>{product.product_name}</span>
                                         <div className={"dish_desc_text"}>
-                                    <MonetizationOnIcon />8
+                                            <MonetizationOnIcon /> 
+                                            {product.product_price}
                                     </div>
                                  </Box>
                              </Box>

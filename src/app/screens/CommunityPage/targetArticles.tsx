@@ -20,7 +20,7 @@ export function TargetArticles(props: any) {
 
       const memberService = new MemberApiService();
       const like_result = await memberService.memberLikeTarget({
-        like_ref_id: e.target._id,
+        like_ref_id: e.target.id,
         group_type: "community",
       });
       assert.ok(like_result, Definer.general_err1);
