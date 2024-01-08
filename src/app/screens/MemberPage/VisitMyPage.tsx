@@ -250,7 +250,7 @@ export function VisitMyPage(props: any) {
                                           <img src={
                                               chosenMember?.mb_type === 'RESTAURANT'
                                                   ? "/icons/odamcha.svg"
-                                                  : "//" // buni ichiga restarant login qilib kirsa shu joyiga restaranlarni iconi chiqadi
+                                                  : "/community/usman.jpg" // buni ichiga restarant login qilib kirsa shu joyiga restaranlarni iconi chiqadi
                                             }
                                           />
                                     </div>
@@ -258,7 +258,7 @@ export function VisitMyPage(props: any) {
                                   <span className={"user_name"}>{chosenMember?.mb_nick}</span>
                                   <span className={"user_type"}>{chosenMember?.mb_type}</span>
                             </Box>
-                            <Box className={"social_wrap"}>
+                            <Box className={"social_wrap"} sx={{mt: "20px"}}>
                                 <Facebook />
                                 <Instagram />
                                 <Telegram />

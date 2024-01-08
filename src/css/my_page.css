@@ -10,7 +10,9 @@
   .my_page .my_page_frame {
     display: flex;
     flex-direction: row;
+    min-height: 700px;
     justify-content: space-between;
+    height: auto;
   }
   
   .my_page .my_page_left {
@@ -159,7 +161,7 @@
   margin-left: 57px;
   position: relative;
   width: 372.58px;
-  height: 408px;
+  height: 416px;
   border-radius: 16px;
   display: flex;
   background: #FFF;
@@ -245,15 +247,17 @@
 
 .my_page_right .user_media_box_follow {
   position: relative;
+  width: 180px;
   flex-direction: row;
   justify-content: space-evenly;
-
+  display: flex;
   color: #616164;
   font-family: DM Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  justify-content: space-between;
 }
 
 .my_page_right .user_media_box_follow .follows {
@@ -274,7 +278,7 @@
 }
 
 .my_page_menu {
-  margin-top: 40px;
+  margin-top: 90px;
   align-items: center;
   flex-direction: column;
   display: flex;

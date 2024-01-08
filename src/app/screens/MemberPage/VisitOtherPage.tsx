@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import Facebook from "@mui/icons-material/Facebook";
 import Instagram from "@mui/icons-material/Instagram";
@@ -29,7 +29,10 @@ import {
 } from "./selector";
 import { Dispatch } from "@reduxjs/toolkit";
 import { Member } from "../../../types/user";
-import { BoArticle } from "../../../types/boArticle";
+import { BoArticle, SearchMemberArticlesObj } from "../../../types/boArticle";
+import { useHistory } from "react-router-dom";
+import MemberApiService from "../../apiServices/memberApiService";
+import CommunityApiService from "../../apiServices/communityApiService";
 
 /** REDUX SLICE */ 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -63,6 +66,8 @@ const chosenSingleBoArticleRetriever = createSelector (
 
 export function VisitOtherPage(props: any) {
     /** INITIALIZATIONS **/
+    const history = useHistory();
+    const { verifiedMemberData, chosen_mb_id, chosen_art_id } = props;
     const {
         setChosenMember,
         setChosenMemberBoArticles,
@@ -71,7 +76,35 @@ export function VisitOtherPage(props: any) {
     const { chosenMember } = useSelector(chosenMemberRetriever);
     const { chosenMemberBoArticles } = useSelector(chosenMemberBoArticlesRetriever);
     const { chosenSingleBoArticle } = useSelector(chosenSingleBoArticleRetriever);
-    const [value, setValue] = useState("4");
+    const [value, setValue] = useState("1");
+    const [memberArticleSearchObj, setMemberArticleSearchObj] =
+        useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 5 });
+
+    useEffect(() => {
+        if (chosen_mb_id === verifiedMemberData?._id) {
+            history.push('/member-page');
+        }
+
+        const communityService = new CommunityApiService();
+        communityService
+            .getMemberCommunityArticles(memberArticleSearchObj)
+            .then((data) => setChosenMemberBoArticles(data))
+            .catch((err) => console.log(err));
+
+    }, [memberArticleSearchObj, chosen_mb_id]);
+
+    useEffect(() => {
+        if (chosen_mb_id === verifiedMemberData?._id) {
+            history.push('/member-page');
+        }
+
+        const memberService = new MemberApiService();
+        memberService
+            .getChosenMember(verifiedMemberData?._id)
+            .then((data) => setChosenMember(data))
+            .catch((err) => console.log(err));
+
+    }, [verifiedMemberData, chosen_mb_id]);
 
   /** HANDLERS **/
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -88,25 +121,29 @@ export function VisitOtherPage(props: any) {
                             <TabPanel value={"1"}>
                                 <Box className={"menu_name"}>Maqolalar</Box>
                                 <Box className={"menu_content"}>
-                                    <MemberPosts chosenMemberBoArticles={chosenMemberBoArticles}/>
+                                      <MemberPosts
+                                          chosenMemberBoArticles={chosenMemberBoArticles} />
                                 </Box>
                             </TabPanel>
                             <TabPanel value={"2"}>
                                 <Box className={"menu_name"}>Followers</Box>
                                 <Box className={"menu_content"}>
-                                    <MemberFollowers action_enabled={false} />
+                                      <MemberFollowers
+                                          action_enabled={false} />
                                 </Box>
                             </TabPanel>
 
                             <TabPanel value={"3"}>
                                 <Box className={"menu_name"}>Following</Box>
                                 <Box className={"menu_content"}>
-                                    <MemberFollowing action_enabled={false} />
+                                      <MemberFollowing
+                                          action_enabled={false} />
                                 </Box>
                             </TabPanel>
 
                             <TabPanel value={"4"}>
-                                <Box className={"menu_name"}>Tanlangan Maqola</Box>
+                                  <Box className={"menu_name"}>
+                                      Tanlangan Maqola</Box>
                                 <Box className={"menu_content"}>
                                 <TViewer text={`<h3>Hello</h3>`}/>
                                 </Box>
