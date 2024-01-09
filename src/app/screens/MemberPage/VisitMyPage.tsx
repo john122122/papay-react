@@ -136,8 +136,6 @@ export function VisitMyPage(props: any) {
             sweetErrorHandling(err).then();
         }
     };
-    
-  
 
   return (
     <div className={"my_page"}>
@@ -188,7 +186,7 @@ export function VisitMyPage(props: any) {
                                 <Box className={"menu_name"}>Followers</Box>
                                 <Box className={"menu_content"}>
                                       <MemberFollowers
-                                          action_enabled={true}
+                                          actions_enabled={true}
                                           followRebuild={followRebuild}
                                           setFollowRebuild={setFollowRebuild}
                                           mb_id={props.verifiedMemberData?._id}
@@ -200,7 +198,7 @@ export function VisitMyPage(props: any) {
                                 <Box className={"menu_name"}>Following</Box>
                                 <Box className={"menu_content"}>
                                       <MemberFollowing
-                                          action_enabled={true}
+                                          actions_enabled={true}
                                           followRebuild={followRebuild}
                                           setFollowRebuild={setFollowRebuild}
                                           mb_id={props.verifiedMemberData?._id}
