@@ -17,6 +17,7 @@ import { serverApi } from "../../../lib/config";
 import { Definer } from "../../../lib/Definer";
 import assert from "assert";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
+import { useHistory } from "react-router-dom";
 
 /** REDUX SLICE */ 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -34,7 +35,8 @@ const memberFollowersRetriever = createSelector (
 
 export function MemberFollowers(props: any) {
     /** INITIALIZATIONS **/
-    const {  mb_id, followRebuild, setFollowRebuild } = props;
+    const history = useHistory();
+    const { mb_id, followRebuild, setFollowRebuild } = props;
     const { setMemberFollowers } = actionDispatch(useDispatch());
     const { memberFollowers } = useSelector(memberFollowersRetriever);
     const [followersSearchObj, setFollowersSearchObj] = useState<FollowSearchObj>(
@@ -71,6 +73,10 @@ export function MemberFollowers(props: any) {
         setFollowersSearchObj({ ...followersSearchObj });      
     };
     
+    const visitMemberHandler = (mb_id: string) => {
+        history.push(`/member-page/other?mb_id=${mb_id}`);
+        document.location.reload();
+    };
     
     return (
             <Stack>
@@ -78,12 +84,22 @@ export function MemberFollowers(props: any) {
                 const image_url = follower?.subscriber_member_data?.mb_image
                     ? `${serverApi}/${follower.subscriber_member_data.mb_image}`
                     : "/community/usman.jpg";
+                function visitMemberHandler(subscriber_id: string): void {
+                    throw new Error("Function not implemented.");
+                }
+
                     return (
                         <Box className={"follow_box"}>
                             <Stack
                                 flexDirection="row"
                             >
-                               <Avatar alt={""} src={image_url} sx={{width: 89, height: 89,}}/>
+                                <Avatar
+                                    alt={""}
+                                    style={{cursor: 'pointer'}}
+                                    src={image_url}
+                                    sx={{ width: 89, height: 89, }}
+                                    onClick={() => visitMemberHandler(follower?.subscriber_id)}
+                                />
                                 <div
                                     style={{
                                         width: "400px",
@@ -97,7 +113,11 @@ export function MemberFollowers(props: any) {
                                     <span className={"username_text"}>
                                         {follower?.subscriber_member_data?.mb_type}
                                     </span>
-                                    <span className={"name_text"}>
+                                    <span
+                                        className={"name_text"}
+                                        style={{cursor: 'pointer'}}
+                                        onClick={() => visitMemberHandler(follower?.subscriber_id)}
+                                    >
                                         {follower?.subscriber_member_data?.mb_nick}
                                     </span>
                                 </div>
