@@ -343,15 +343,19 @@ const unsubscribeHandler = async (e: any, id: string) => {
 
                         <Box className={"my_page_menu"}>
                             <TabList
+                              orientation="vertical"
+                              variant="scrollable"
+                              value={value}
                               onChange={handleChange}
-                              aria-label="lab AIP tabs example"
+                              aria-label="Vertical tabs example"
+                              sx={{ borderRight: 1, borderColor: 'divider' }} 
                             >
                                 <Tab 
                                    style={{ flexDirection: "column" }}
                                    value={"1"}
                                    component={() => (
                                     <div
-                                      className={`menu_box ${value} `}
+                                      className={`menu_box`}
                                       onClick={() => setValue("1")}
                                     >
                                         <img src={"/icons/pencil.svg"} />
@@ -364,7 +368,7 @@ const unsubscribeHandler = async (e: any, id: string) => {
                                   value={"2"}
                                   component={() => (
                                     <div
-                                       className={`menu_box ${value} `}
+                                       className={`menu_box`}
                                        onClick={() =>setValue("2")}
                                     >
                                         <img src={"/icons/followers.svg"} />
@@ -377,7 +381,7 @@ const unsubscribeHandler = async (e: any, id: string) => {
                                    value={"3"}
                                    component={() => (
                                     <div 
-                                       className={`menu_box ${value} `}
+                                       className={`menu_box`}
                                        onClick={() => setValue("3")}
                                     >
                                         <img src={"/icons/following.svg"} />

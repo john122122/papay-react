@@ -64,11 +64,12 @@ export const TuiEditor = (props: any) => {
 
             {/*@ts-ignore*/}
             <Editor
-                initialValue="  "
-                placeholder="Type Here"
+                ref={editorRef}
+                initialValue="Type here"
+                placeholder="Type here"
                 previewStyle="vertical"
                 height="640px"
-                initialEditType="wysiwyg"
+                initialEditType="WYSIWYG"
                 useCommandShortcut={false}
             // @ts-ignore
                 ref={editorRef}
