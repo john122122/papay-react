@@ -41,7 +41,7 @@ import { BoArticle, SearchMemberArticlesObj } from "../../../types/boArticle";
 import { sweetErrorHandling, sweetFailureProvider } from "../../../lib/sweetAlert";
 import CommunityApiService from "../../apiServices/communityApiService";
 import MemberApiService from "../../apiServices/memberApiService";
-import { verifyMemberData } from "../../apiServices/verify";
+import { verifiedMemberData } from "../../apiServices/verify";
 
 /** REDUX SLICE */ 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -75,7 +75,6 @@ const chosenSingleBoArticleRetriever = createSelector (
 
 export function VisitMyPage(props: any) {
     /** INITIALIZATIONS **/
-    const { verifiedMemberData } = props;
     const {
         setChosenMember,
         setChosenMemberBoArticles,
@@ -94,7 +93,7 @@ export function VisitMyPage(props: any) {
         useState<SearchMemberArticlesObj>({ mb_id: "none", page: 1, limit: 4 });
     
     useEffect(() => {
-        if (!localStorage.getItem("member_data")) {
+        if (!verifiedMemberData) {
             sweetFailureProvider("Please login first", true, true);
         }
 
@@ -189,7 +188,7 @@ export function VisitMyPage(props: any) {
                                           actions_enabled={true}
                                           followRebuild={followRebuild}
                                           setFollowRebuild={setFollowRebuild}
-                                          mb_id={props.verifiedMemberData?._id}
+                                          mb_id={verifiedMemberData?._id}
                                       />
                                 </Box>
                             </TabPanel>
@@ -201,7 +200,7 @@ export function VisitMyPage(props: any) {
                                           actions_enabled={true}
                                           followRebuild={followRebuild}
                                           setFollowRebuild={setFollowRebuild}
-                                          mb_id={props.verifiedMemberData?._id}
+                                          mb_id={verifiedMemberData?._id}
                                       />
                                 </Box>
                             </TabPanel>

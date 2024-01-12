@@ -37,6 +37,7 @@ import RestaurantApiService from '../../apiServices/restaurantApiService';
 import { serverApi } from '../../../lib/config';
 import { useHistory, useParams } from 'react-router-dom';
 import ProductApiService from "../../apiServices/productApiService";
+import { verifiedMemberData } from "../../apiServices/verify";
 
 
 /** REDUX SLICE */ 
@@ -133,7 +134,7 @@ export function OneRestaurant(props: any) {
      // likeni yuzaga keltiradigan kodlarimiz
    const targetLikeProduct = async (e: any) => {
     try {
-       assert.ok(localStorage.getItem("member_data"), Definer.auth_err1);
+       assert.ok(verifiedMemberData, Definer.auth_err1);
 
        const memberService = new MemberApiService(),
           like_result: any = await memberService.memberLikeTarget({

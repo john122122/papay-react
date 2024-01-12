@@ -39,6 +39,7 @@ import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/swee
 import assert from "assert";
 import { Definer } from "../../../lib/Definer";
 import FollowApiService from "../../apiServices/followApiService";
+import { verifiedMemberData } from "../../apiServices/verify";
 
 /** REDUX SLICE */ 
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -73,7 +74,7 @@ const chosenSingleBoArticleRetriever = createSelector (
 export function VisitOtherPage(props: any) {
     /** INITIALIZATIONS **/
     const history = useHistory();
-    const { verifiedMemberData, chosen_mb_id, chosen_art_id } = props;
+    const { chosen_mb_id, chosen_art_id } = props;
     const {
         setChosenMember,
         setChosenMemberBoArticles,
@@ -149,7 +150,7 @@ export function VisitOtherPage(props: any) {
 
 const subscribeHandler = async (e: any, id: string) => {
     try {
-        assert.ok(localStorage.getItem('member_data'), Definer.auth_err1);
+        assert.ok(verifiedMemberData, Definer.auth_err1);
 
         const followService = new FollowApiService();
         await followService.subscribe(e.target.value);
@@ -163,7 +164,7 @@ const subscribeHandler = async (e: any, id: string) => {
 };
 const unsubscribeHandler = async (e: any, id: string) => {
     try {
-        assert.ok(localStorage.getItem('member_data'), Definer.auth_err1);
+        assert.ok(verifiedMemberData, Definer.auth_err1);
 
         const followService = new FollowApiService();
         await followService.unsubscribe(e.target.value);
