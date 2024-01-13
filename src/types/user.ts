@@ -42,9 +42,10 @@ export interface Member {
     me_followed: MeFollowed[];
 }
 
-// export interface AuthenticationModalProps {
-//     signUpOpen: boolean;
-//     loginOpen: boolean;
-//     handleLoginOpen: () => void;
-//     handleSingUpOpen: () => void;
-// }
+export interface MemberUpdateData {
+    mb_nick?: string | null;
+    mb_phone: string | null;
+    mb_address?: string | null;
+    mb_description?: string | null;
+    mb_image?: string | null;
+}

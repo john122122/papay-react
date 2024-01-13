@@ -243,7 +243,7 @@ export function VisitMyPage(props: any) {
                             >
                                 <div className={"order_user_img"}>
                                     <img
-                                       src={"/community/usman.jpg"}
+                                       src={verifiedMemberData?.mb_image}
                                        className={"order_user_avatar"} 
                                     />
                                     <div className={"user_corner_icon"}>
