@@ -106,7 +106,7 @@ class MemberApiService {
         }
     }
 
-    public async updateMemberData(data: MemberUpdateData) {
+    public async updateMemberData(data: MemberUpdateData): Promise<Member> {
         try {
             let formData = new FormData();
             formData.append("mb_nick", data.mb_nick || "");

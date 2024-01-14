@@ -312,7 +312,8 @@ const unsubscribeHandler = async (e: any, id: string) => {
                                           <Tab
                                               style={{ flexDirection: "column" }}
                                               value={"4"}
-                                              component={() => (
+                                                  component={() => (
+                                                  //@ts-ignore
                                                   <Button
                                                       value={chosenMember?._id}
                                                       variant={"contained"}
@@ -327,7 +328,8 @@ const unsubscribeHandler = async (e: any, id: string) => {
                                             <Tab
                                                 style={{ flexDirection: "column" }}
                                                 value={"4"}
-                                                component={() => (
+                                                  component={() => (
+                                                    //@ts-ignore
                                                       <Button
                                                           value={chosenMember?._id}
                                                           variant={"contained"}

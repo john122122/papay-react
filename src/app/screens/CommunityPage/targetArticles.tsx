@@ -81,7 +81,7 @@ export function TargetArticles(props: any) {
                   className={"article_share_main"}
                   style={{
                     color: "#fff",
-                    marginLeft: "150px",
+                    marginLeft: "270px",
                     display: "flex",
                     alignItems: "center",
                   }}
