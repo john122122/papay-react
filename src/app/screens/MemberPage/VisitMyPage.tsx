@@ -302,7 +302,8 @@ export function VisitMyPage(props: any) {
                             </Box>
                         </Box>
 
-                        <Box className={"my_page_menu"}>
+                          <Box className={"my_page_menu"}>
+                              {/*@ts-ignore*/}
                               <TabList
                                   orientation="vertical"
                                   variant="scrollable"

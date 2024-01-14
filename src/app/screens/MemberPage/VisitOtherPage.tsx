@@ -307,7 +307,8 @@ const unsubscribeHandler = async (e: any, id: string) => {
                                    aria-label="lab AIP tabs example"
                                   >
                                       {chosenMember?.me_followed && 
-                                       chosenMember.me_followed[0]?.my_following ? (
+                                          chosenMember.me_followed[0]?.my_following ? (
+                                              
                                           <Tab
                                               style={{ flexDirection: "column" }}
                                               value={"4"}
@@ -342,7 +343,8 @@ const unsubscribeHandler = async (e: any, id: string) => {
                               </Box>
                         </Box>
 
-                        <Box className={"my_page_menu"}>
+                          <Box className={"my_page_menu"}>
+                              {/*@ts-ignore*/}
                             <TabList
                               orientation="vertical"
                               variant="scrollable"
