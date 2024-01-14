@@ -1,14 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Avatar, Box, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { SocketContext } from "../../context/socket";
 
 export function CommunityChats() {
    /** INITIALIZATION **/
-   const [ messagesList, setMessagesList] = useState([]);
+  const [messagesList, setMessagesList] = useState([]);
+  const socket = useContext(SocketContext);
+  const [onlineUsers, setOnlineUsers] = useState<number>(0);
+
+  useEffect(() => {
+    socket.connect();
+    console.log("PRINTED");
+
+    socket?.on("connect", function () {
+      console.log("CLIENT: connected");
+    });
+
+    socket?.on("newMsg", (new_message: any) => {
+      console.log("CLIENT: new_message");
+    });
+
+    socket?.on("greetMsg", (new_message: any) => {
+      console.log("CLIENT: greet message");
+    });
+
+    socket?.on("infoMsg", (msg: any) => {
+      console.log("CLIENT: info message");
+      setOnlineUsers(msg.total);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [socket]);
 
     return (
         <Stack className={"chat_frame"}>
-         <Box className={"chat_top"}>Live Talk</Box>
+        <Box className={"chat_top"}>Live Talk {onlineUsers}</Box>
           <Box className={"chat_content"}>
            <Stack className={"chat_main"}>
             <Box 
