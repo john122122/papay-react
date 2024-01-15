@@ -1,6 +1,92 @@
 import { Avatar, Box, Container, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+
+// REDUX
+import { useDispatch, useSelector } from "react-redux";
+import {createSelector} from "reselect";
+import { 
+  setBestBoArticles,
+  setTrendBoArticles,
+  setNewsBoArticles,
+ } from "./slice";
+import {
+  retrieveTrendBoArticles,
+  retrieveNewsBoArticles,
+  retrieveBestBoArticles,
+} from "./selector";
+import { Dispatch } from "@reduxjs/toolkit";
+import { BoArticle } from "../../../types/boArticle";
+import CommunityApiService from "../../apiServices/communityApiService";
+import { serverApi } from "../../../lib/config";
+import TViewer from "../../components/tuiEditor/TViewer";
+
+/** REDUX SLICE */ 
+const actionDispatch = (dispatch: Dispatch) => ({
+  setBestBoArticles: (data: BoArticle[]) => dispatch(setBestBoArticles(data)),
+  setTrendBoArticles: (data: BoArticle[]) => dispatch(setTrendBoArticles(data)),
+  setNewsBoArticles: (data: BoArticle[]) => dispatch(setNewsBoArticles(data)),
+});
+
+/** REDUX SELECTOR */
+const bestBoArticlesRetriever = createSelector (
+    retrieveBestBoArticles,
+    (bestBoArticles) =>({
+      bestBoArticles,
+    })
+);
+const trendBoArticlesRetriever = createSelector (
+  retrieveTrendBoArticles,
+  (trendBoArticles) =>({
+    trendBoArticles,
+  })
+);
+const newsBoArticlesRetriever = createSelector (
+  retrieveNewsBoArticles,
+  (newsBoArticles) =>({
+    newsBoArticles,
+  })
+);
+
 export function Recomendations() {
+  /** INITIALIZATIONS **/
+  const { setBestBoArticles, setTrendBoArticles, setNewsBoArticles } = actionDispatch(useDispatch());
+  const { bestBoArticles } = useSelector(bestBoArticlesRetriever);
+  const { trendBoArticles } = useSelector(trendBoArticlesRetriever);
+  const { newsBoArticles } = useSelector(newsBoArticlesRetriever);
+
+  useEffect(() => {
+    const communityService = new CommunityApiService();
+    communityService
+      .getTargetArticles({
+        bo_id: "all",
+        page: 1,
+        limit: 2,
+        order: "art_views",
+      })
+      .then((data) => setBestBoArticles(data))
+      .catch((err) => console.log(err));
+    
+    communityService
+      .getTargetArticles({
+        bo_id: "all",
+        page: 1,
+        limit: 2,
+        order: "art_likes",
+      })
+      .then((data) => setTrendBoArticles(data))
+      .catch((err) => console.log(err));
+    
+    communityService
+      .getTargetArticles({
+        bo_id: "celebrity",
+        page: 1,
+        limit: 2,
+        order: "art_views",
+      })
+      .then((data) => setNewsBoArticles(data))
+      .catch((err) => console.log(err));
+  }, []);
+ 
   return (
     <div className="top_article_frame">
       <Container
@@ -17,106 +103,113 @@ export function Recomendations() {
             <Stack flexDirection={"column"}>
               <Stack className="article_container">
                 <Box className="article_categorya_title">Ko’p ko’rilgan</Box>
-                <Stack flexDirection={"column"}>
-                  <Stack className="articel_box" flexDirection={"row"}>
-                    <Box className="article_img"></Box>
-                    <Stack className="article_info">
-                      <Box className="article_main_info">
-                        <div className="article_author">
-                          <Avatar
-                            alt="author photo"
-                            src="/ath/user.svg"
-                            sx={{ width: "35px", height: "35px" }}
-                          />
-                          <span className="auth_username">Ilhom</span>
-                        </div>
-                        <Box className="article_title" sx={{ mt: "22px" }}>
-                          Eng mazali va Shirin <br /> taomlar
-                        </Box>
-                        <p className="article_desc"></p>
-                      </Box>
+                {bestBoArticles?.map((article: BoArticle) => {
+                  const art_image_url = article?.art_image
+                    ? `${serverApi}/${article?.art_image}`
+                    : "/icons/odamcha.svg";
+                  return (
+                    <Stack flexDirection={"column"}>
+                      <Stack
+                        className="article_box"
+                        flexDirection={"row"}
+                        key={article._id}
+                      >
+                        <Box
+                          className="article_img"
+                          sx={{
+                            backgroundImage: `url(${art_image_url})`,
+                          }}
+                        ></Box>
+                        <Stack className="article_info">
+                          <Box className="article_main_info">
+                            <div className="article_author">
+                              <Avatar
+                                alt="author photo"
+                                src={
+                                  article?.member_data?.mb_image
+                                    ? `${serverApi}/${article?.member_data?.mb_image}`
+                                    : "/icons/odamcha.svg"
+                                }
+                                sx={{ width: "35px", height: "35px" }}
+                              />
+                              <span className="auth_username">
+                                {article?.member_data?.mb_nick}
+                              </span>
+                            </div>
+                            <Box className="article_title" sx={{ mt: "22px" }}>
+                              {article?.art_subject}
+                            </Box>
+                            <p className="article_desc"></p>
+                          </Box>
+                        </Stack>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                </Stack>
-                <Stack flexDirection={"column"}>
-                  <Stack className="articel_box" flexDirection={"row"}>
-                    <Box className="article_img"></Box>
-                    <Stack className="article_info">
-                      <Box className="article_main_info">
-                        <div className="article_author">
-                          <Avatar
-                            alt="author photo"
-                            src="/ath/user.svg"
-                            sx={{ width: "35px", height: "35px" }}
-                          />
-                          <span className="auth_username">Jamil</span>
-                        </div>
-                        <Box className="article_title" sx={{ mt: "22px" }}>
-                          Eng mazali va Shirin <br /> taomlar
-                        </Box>
-                        <p className="article_desc"></p>
-                      </Box>
-                    </Stack>
-                  </Stack>
-                </Stack>
-              </Stack>
+                  );
+                })}
+                
               <Stack className="article_container">
                 <Box className="article_categorya_title">Ko’p Yoqtirilgan</Box>
-                <Stack flexDirection={"column"}>
-                  <Stack className="articel_box" flexDirection={"row"}>
-                    <Box className="article_img"></Box>
-                    <Stack className="article_info">
-                      <Box className="article_main_info">
-                        <div className="article_author">
-                          <Avatar
-                            alt="author photo"
-                            src="/ath/user.svg"
-                            sx={{ width: "35px", height: "35px" }}
-                          />
-                          <span className="auth_username">Jamshid</span>
-                        </div>
-                        <Box className="article_title" sx={{ mt: "22px" }}>
-                          Eng mazali va Shirin <br /> taomlar
-                        </Box>
-                        <p className="article_desc"></p>
-                      </Box>
+                  <Stack flexDirection={"column"}>
+                    
+                  {trendBoArticles?.map((article: BoArticle) => {
+                  const art_image_url = article?.art_image
+                    ? `${serverApi}/${article?.art_image}`
+                    : "/icons/odamcha.svg";
+                  return (
+                    <Stack flexDirection={"column"}>
+                      <Stack
+                        className="article_box"
+                        flexDirection={"row"}
+                        key={article._id}
+                      >
+                        <Box
+                          className="article_img"
+                          sx={{
+                            backgroundImage: `url(${art_image_url})`,
+                          }}
+                        ></Box>
+                        <Stack className="article_info">
+                          <Box className="article_main_info">
+                            <div className="article_author">
+                              <Avatar
+                                alt="author photo"
+                                src={
+                                  article?.member_data?.mb_image
+                                    ? `${serverApi}/${article?.member_data?.mb_image}`
+                                    : "/icons/odamcha.svg"
+                                }
+                                sx={{ width: "35px", height: "35px" }}
+                              />
+                              <span className="auth_username">
+                                {article?.member_data?.mb_nick}
+                              </span>
+                            </div>
+                            <Box className="article_title" sx={{ mt: "22px" }}>
+                              {article?.art_subject}
+                            </Box>
+                            <p className="article_desc"></p>
+                          </Box>
+                        </Stack>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                </Stack>
-                <Stack flexDirection={"column"}>
-                  <Stack className="articel_box" flexDirection={"row"}>
-                    <Box className="article_img"></Box>
-                      <Stack className="article_info">
-                      <Box className="article_main_info">
-                        <div className="article_author">
-                          <Avatar
-                            alt="author photo"
-                            src="/ath/user.svg"
-                            sx={{ width: "35px", height: "35px" }}
-                          />
-                          <span className="auth_username">Rustem</span>
-                        </div>
-                        <Box className="article_title" sx={{ mt: "22px" }}>
-                          Eng mazali va Shirin <br /> taomlar
-                        </Box>
-                        <p className="article_desc"></p>
-                      </Box>
-                    </Stack>
-                  </Stack>
-                </Stack>
+                  );
+                })}
+               </Stack>
               </Stack>
             </Stack>
             <Stack className="article_container">
-              <Box className="article_categorya_title">Mashhurlar</Box>
-              <Box className="article_news">
-                <h1 style={{ color: "orange" }}>TViewer</h1>
-              </Box>
-              <Box className="article_news">
-                <h1 style={{ color: "orange" }}>TViewer</h1>
-              </Box>
+                <Box className="article_categorya_title">Mashhurlar</Box>
+                {newsBoArticles?.map((article: BoArticle) => {
+                  return (
+                    <Box className={"article_news"}>
+                      <TViewer chosenSingleBoArticle={article} />
+                    </Box>
+                  );
+                })}
             </Stack>
+            </Stack>
+           </Stack>
           </Stack>
-        </Stack>
       </Container>
     </div>
   );
