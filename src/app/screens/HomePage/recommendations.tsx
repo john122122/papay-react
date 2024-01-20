@@ -97,16 +97,18 @@ export function Recomendations() {
           position: "relative",
         }}
       >
-        <Stack flexDirection={"column"} alignItems={"center"}>
-          <Box className="category_title">Tafsiya qilingan maqolalar</Box>
+        <Box className="category_title" >Tafsiya qilingan maqolalar</Box>
           <Stack flexDirection={"row"} className="article_main">
-            <Stack flexDirection={"column"}>
-              <Stack className="article_container">
+           
+              <Stack className="article_container" flexDirection={"row"}>
+                <Stack flexDirection={"column"}>
+
                 <Box className="article_categorya_title">Ko’p ko’rilgan</Box>
                 {bestBoArticles?.map((article: BoArticle) => {
                   const art_image_url = article?.art_image
                     ? `${serverApi}/${article?.art_image}`
-                    : "/icons/odamcha.svg";
+                    : "/restaurant/sezor.jpeg";
+                  
                   return (
                     <Stack flexDirection={"column"}>
                       <Stack
@@ -128,7 +130,7 @@ export function Recomendations() {
                                 src={
                                   article?.member_data?.mb_image
                                     ? `${serverApi}/${article?.member_data?.mb_image}`
-                                    : "/icons/odamcha.svg"
+                                    : "/restaurant/sezor.jpeg"
                                 }
                                 sx={{ width: "35px", height: "35px" }}
                               />
@@ -146,21 +148,21 @@ export function Recomendations() {
                     </Stack>
                   );
                 })}
-                
-              <Stack className="article_container">
+                  
                 <Box className="article_categorya_title">Ko’p Yoqtirilgan</Box>
-                  <Stack flexDirection={"column"}>
+                
                     
                   {trendBoArticles?.map((article: BoArticle) => {
                   const art_image_url = article?.art_image
                     ? `${serverApi}/${article?.art_image}`
-                    : "/icons/odamcha.svg";
+                    : "/restaurant/sezor.jpeg";
+
                   return (
                     <Stack flexDirection={"column"}>
                       <Stack
                         className="article_box"
                         flexDirection={"row"}
-                        key={article._id}
+                        key={article?._id}
                       >
                         <Box
                           className="article_img"
@@ -168,15 +170,16 @@ export function Recomendations() {
                             backgroundImage: `url(${art_image_url})`,
                           }}
                         ></Box>
+
                         <Stack className="article_info">
                           <Box className="article_main_info">
                             <div className="article_author">
                               <Avatar
-                                alt="author photo"
+                                alt="Author_photo"
                                 src={
                                   article?.member_data?.mb_image
                                     ? `${serverApi}/${article?.member_data?.mb_image}`
-                                    : "/icons/odamcha.svg"
+                                    : "/restaurant/sezor.jpeg"
                                 }
                                 sx={{ width: "35px", height: "35px" }}
                               />
@@ -190,14 +193,17 @@ export function Recomendations() {
                             <p className="article_desc"></p>
                           </Box>
                         </Stack>
+
                       </Stack>
                     </Stack>
                   );
                 })}
-               </Stack>
+              
+                </Stack>
+
               </Stack>
-            </Stack>
-            <Stack className="article_container">
+              
+              <Stack className="article_container">
                 <Box className="article_categorya_title">Mashhurlar</Box>
                 {newsBoArticles?.map((article: BoArticle) => {
                   return (
@@ -206,10 +212,9 @@ export function Recomendations() {
                     </Box>
                   );
                 })}
-            </Stack>
-            </Stack>
-           </Stack>
+              </Stack>
           </Stack>
+
       </Container>
     </div>
   );

@@ -360,16 +360,17 @@
 }
 
 .category_title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+
   width: 428.293px;
   height: 33px;
   flex-shrink: 0;
   color: #e3c08d;
-
-  font-family: "Roboto";
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  margin-left: 339px;
 }
 
 .article_main {
